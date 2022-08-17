@@ -31,7 +31,7 @@ function CompatibilityScreen() {
 
 const BottomTabNavigator = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator initialRouteName={BottomTabNavigatorRouts.Daily}>
       <Tab.Screen
         name={BottomTabNavigatorRouts.Personality}
         component={PersonalityScreen}

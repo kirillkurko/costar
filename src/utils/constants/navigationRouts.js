@@ -3,3 +3,19 @@ export const BottomTabNavigatorRouts = {
   Daily: 'daily',
   Compatibility: 'compatibility',
 };
+export const RootStackNavigatorRouts = {
+  TabNavigator: 'tabNavigator',
+  SubscribeFirstVariant: 'subscribeFirstVariant',
+  Privacy: 'privacy',
+  Terms: 'terms',
+  Feedback: 'feedback',
+  FAQ: 'FAQ',
+  Gift: 'Gift',
+};
+export const OnboardingStackNavigatorRouts = {
+  WelcomeStep: 'WelcomeStep',
+  NameStep: 'NameStep',
+  BirthdayStep: 'BirthdayStep',
+  QuestionsStep: 'QuestionsStep',
+  ProgressStep: 'ProgressStep',
+};
