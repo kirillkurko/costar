@@ -1,6 +1,6 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {BottomTabNavigatorRouts} from '../utils/constants/navigationRouts';
+import {BottomTabNavigatorRouts} from '../variables/navigationRouts';
 import {Text, View} from 'react-native';
 import DailyMatchup from '../screens/DailyMatchup';
 

@@ -1,21 +1,25 @@
 //  @flow
-
-import I18n from 'i18n-js';
-import * as RNLocalize from 'react-native-localize';
-
+import {I18n} from 'i18n-js';
 import en from './locales/en';
 import zh from './locales/zh';
 
+/*
 const locales = RNLocalize.getLocales();
 
 if (Array.isArray(locales)) {
-    I18n.locale = locales[0].languageTag;
+  I18n.locale = locales[0].languageTag;
 }
 
 I18n.fallbacks = true;
 I18n.translations = {
-    en,
-    zh,
+  en,
+  zh,
 };
+*/
 
-export default I18n;
+const resources = new I18n({
+  en,
+  zh,
+});
+
+export default resources;

@@ -1,21 +1,14 @@
 // @flow
 
 import React, {PureComponent} from 'react';
-import {ImageBackground, View} from 'react-native';
+import {ImageBackground, ScrollView, View} from 'react-native';
 
-import {
-  NavigationEvents,
-  NavigationScreenProps,
-  ScrollView,
-  withNavigation,
-} from 'react-navigation';
 import {connect} from 'react-redux';
 import {ScrollIntoView, wrapScrollView} from 'react-native-scroll-into-view';
 import SwitchSelector from 'react-native-switch-selector';
 
-import {Prognosis} from 'src/components';
-import Header from 'src/components/Header';
-import I18n from 'src/shared/i18n/configuration';
+import {Header, Prognosis} from 'src/components';
+import resources from 'src/shared/i18n/configuration';
 import {getJoinedDate} from 'src/helpers';
 import purchasesInteractions from 'src/shared/purchases/interactions';
 import {img} from 'assets/img';
@@ -31,6 +24,7 @@ import FixedButton from 'src/components/common/FixedButton';
 import styles from './styles';
 import SubscriptionBigButton from 'src/components/common/SubscriptionBigButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useNavigation} from '@react-navigation/native';
 
 type State = {
   userBirthDateParts: Array<string>,
@@ -45,20 +39,19 @@ type Props = {
   prognosisTomorrow: Object,
   prognosisYesterday: Object,
   prognosisToday: Object,
-  navigation: NavigationScreenProps,
 };
 
 const options = [
   {
-    label: I18n.t('DAILY_NUMEROLOGY.YESTERDAY'),
+    label: resources.t('DAILY_NUMEROLOGY.YESTERDAY'),
     value: 'yesterday',
   },
   {
-    label: I18n.t('DAILY_NUMEROLOGY.TODAY'),
+    label: resources.t('DAILY_NUMEROLOGY.TODAY'),
     value: 'today',
   },
   {
-    label: I18n.t('DAILY_NUMEROLOGY.TOMORROW'),
+    label: resources.t('DAILY_NUMEROLOGY.TOMORROW'),
     value: 'tomorrow',
   },
 ];
@@ -79,6 +72,8 @@ class DailyMatchup extends PureComponent<Props, State> {
   scrollView: ScrollView;
 
   matrixRef = React.createRef<any>();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  navigation = useNavigation();
 
   scrollIntoViewOptions = {
     align: 'top',
@@ -86,12 +81,6 @@ class DailyMatchup extends PureComponent<Props, State> {
       top: 0,
     },
   };
-
-  async componentDidMount() {
-    const {dispatch} = this.props;
-
-    dispatch(getFeedbackLinks());
-  }
 
   onDidFocus = async () => {
     const {dispatch} = this.props;
@@ -121,6 +110,17 @@ class DailyMatchup extends PureComponent<Props, State> {
       dispatch(getPrognosisYesterday(date));
     }
   };
+
+  async componentDidMount() {
+    const {dispatch} = this.props;
+
+    dispatch(getFeedbackLinks());
+    this.navigation.addListener('focus', this.onDidFocus);
+  }
+
+  componentWillUnmount() {
+    this.navigation.removeListener('focus', this.onDidFocus);
+  }
 
   onDateChange = async userBirthDate => {
     const {dispatch} = this.props;
@@ -202,7 +202,6 @@ class DailyMatchup extends PureComponent<Props, State> {
 
     return (
       <View style={styles.container}>
-        <NavigationEvents onDidFocus={this.onDidFocus} />
         <ImageBackground source={img.gradient} style={styles.background}>
           <View style={styles.viewContainer}>
             {!purchaseButtonVisible && (
@@ -229,7 +228,7 @@ class DailyMatchup extends PureComponent<Props, State> {
               onScroll={this.onScroll}>
               <View style={styles.contentContainer}>
                 <Header
-                  title={I18n.t('DAILY_NUMEROLOGY.SCREEN_TITLE')}
+                  title={resources.t('DAILY_NUMEROLOGY.SCREEN_TITLE')}
                   onQuestionPress={this.onQuestionPress}
                   userBirthDateParts={userBirthDateParts}
                   onDateChange={this.onDateChange}
@@ -279,4 +278,4 @@ const mapStateToProps = state => ({
   state,
 });
 
-export default connect(mapStateToProps, null)(withNavigation(DailyMatchup));
+export default connect(mapStateToProps, null)(DailyMatchup);

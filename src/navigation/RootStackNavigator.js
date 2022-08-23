@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {RootStackNavigatorRouts} from '../utils/constants/navigationRouts';
+import {RootStackNavigatorRouts} from '../variables/navigationRouts';
 import BottomTabNavigator from './BottomTabNavigator';
 
 const RootStack = createStackNavigator();
