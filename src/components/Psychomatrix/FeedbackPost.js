@@ -9,7 +9,6 @@ import {resources} from '../../shared';
 import {colors, fonts} from 'src/variables';
 import {wp} from 'src/helpers';
 import {useNavigation} from '@react-navigation/native';
-import {logEvent} from '../../shared/analytics/FB';
 
 type Props = {
   getFAQ(): void,
@@ -20,7 +19,6 @@ const FeedbackPost = ({getFAQ}: Props) => {
   const onPress = useCallback(() => {
     navigation.navigate('Feedback');
     getFAQ();
-    logEvent('button_psychomatrix_ask_us_tapped');
   }, [navigation]);
 
   return (

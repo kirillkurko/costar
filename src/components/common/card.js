@@ -17,7 +17,6 @@ import {colors, fonts} from 'src/variables';
 import {img} from 'assets/img';
 import {navigateToSubscriptionScreen} from 'src/shared/analytics/Firebase';
 import {useNavigation} from '@react-navigation/native';
-import {logEvent} from '../../shared/analytics/FB';
 
 type Props = {
   isFetching: boolean,
@@ -35,9 +34,7 @@ export class Card extends PureComponent<Props> {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   navigation = useNavigation();
   onPress = (eventItem: string) => {
-    const {refresh, eventSource} = this.props;
-
-    logEvent(`${eventItem}_${eventSource}_unlock_tapped`);
+    const {refresh} = this.props;
 
     navigateToSubscriptionScreen(this.navigation, refresh, eventItem);
   };

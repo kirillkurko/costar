@@ -9,7 +9,6 @@ import {
   View,
 } from 'react-native';
 
-import {logEvent} from 'src/shared/analytics/FB';
 import {resources} from '../../../shared';
 import Button from 'src/shared/components/Button';
 import {img} from 'assets/img';
@@ -33,8 +32,6 @@ class PsychomatrixPost extends PureComponent<Props> {
   navigation = useNavigation();
   onPress = (eventItem: string) => {
     const {refresh} = this.props;
-
-    logEvent(`${eventItem}_personality_psychomatrix_unlock_tapped`);
 
     navigateToSubscriptionScreen(
       this.navigation,
