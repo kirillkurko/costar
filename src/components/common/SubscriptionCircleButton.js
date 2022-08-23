@@ -1,27 +1,20 @@
 // @flow
 
 import React, {PureComponent} from 'react';
-import {
-  AsyncStorage,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
-import {NavigationScreenProps, withNavigation} from 'react-navigation';
+import {Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 import {colors, fonts} from 'src/variables';
 import {img} from 'assets/img';
 import {resources} from '../../shared';
-import {AmplitudeLogEvent} from 'src/shared/analytics/Amplitude';
 import {navigateToSubscriptionScreen} from 'src/shared/analytics/Firebase';
+import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type State = {
   isVisible: boolean,
 };
 
 type Props = {
-  navigation: NavigationScreenProps,
   refresh(): Promise<void>,
   eventSource: string,
 };
@@ -31,15 +24,17 @@ class SubscriptionCircleButton extends PureComponent<Props, State> {
     isVisible: true,
   };
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  navigation = useNavigation();
+
   onPress = () => {
-    AmplitudeLogEvent('button_diamond_round_tapped');
-    const {navigation, refresh, eventSource} = this.props;
+    const {refresh} = this.props;
 
     // navigation.navigate('Subscribe3', {
     //     onGoBack: () => refresh(),
     // });
 
-    navigateToSubscriptionScreen(navigation, refresh, 'diamond_round');
+    navigateToSubscriptionScreen(this.navigation, refresh, 'diamond_round');
   };
 
   onCloseCircleButton = () => {
@@ -74,7 +69,7 @@ class SubscriptionCircleButton extends PureComponent<Props, State> {
   }
 }
 
-export default withNavigation(SubscriptionCircleButton);
+export default SubscriptionCircleButton;
 
 const styles = StyleSheet.create({
   subscriptionCircleButton: {

@@ -9,16 +9,15 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {NavigationScreenProps, withNavigation} from 'react-navigation';
 
 import {resources} from '../../shared';
 import Button from 'src/shared/components/Button';
 import {wp} from 'src/helpers';
 import {colors, fonts} from 'src/variables';
 import {img} from 'assets/img';
-import {logEvent} from 'src/shared/analytics/FB';
-import {AmplitudeLogEvent} from 'src/shared/analytics/Amplitude';
 import {navigateToSubscriptionScreen} from 'src/shared/analytics/Firebase';
+import {useNavigation} from '@react-navigation/native';
+import {logEvent} from '../../shared/analytics/FB';
 
 type Props = {
   isFetching: boolean,
@@ -27,20 +26,20 @@ type Props = {
   description: string,
   isActivePurchase: boolean,
   id: number,
-  navigation: NavigationScreenProps,
   refresh(): Promise<void>,
   professions: ?Array<string>,
   eventSource: string,
 };
 
 export class Card extends PureComponent<Props> {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  navigation = useNavigation();
   onPress = (eventItem: string) => {
-    const {navigation, refresh, eventSource} = this.props;
+    const {refresh, eventSource} = this.props;
 
     logEvent(`${eventItem}_${eventSource}_unlock_tapped`);
-    AmplitudeLogEvent(`${eventItem}_${eventSource}_unlock_tapped`);
 
-    navigateToSubscriptionScreen(navigation, refresh, eventItem);
+    navigateToSubscriptionScreen(this.navigation, refresh, eventItem);
   };
 
   render() {
@@ -138,7 +137,7 @@ export class Card extends PureComponent<Props> {
   }
 }
 
-export default withNavigation(Card);
+export default Card;
 
 const styles = StyleSheet.create({
   container: {

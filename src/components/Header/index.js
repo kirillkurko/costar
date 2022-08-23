@@ -8,7 +8,7 @@ import SingleDatePicker from '../../components/DatePickers/SingleDatePicker';
 import DoubleDatePicker from '../../components/DatePickers/DoubleDatePicker';
 import {wp} from '../../helpers';
 import {colors, fonts} from '../../variables';
-import {img} from '../../../assets/img';
+import {img} from 'assets/img';
 
 type Props = {
   onQuestionPress(): ?void,

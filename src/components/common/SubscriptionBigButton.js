@@ -7,7 +7,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import {colors, fonts} from 'src/variables';
 import {img} from 'assets/img';
 import {wp} from 'src/helpers';
-import {AmplitudeLogEvent} from 'src/shared/analytics/Amplitude';
 import {navigateToSubscriptionScreen} from 'src/shared/analytics/Firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -27,10 +26,6 @@ export class SubscriptionBigButton extends PureComponent<Props, State> {
 
   onPress = () => {
     const {navigation, refresh, eventSource} = this.props;
-
-    AmplitudeLogEvent('button_diamond_rectangular_tapped', {
-      atScreen: navigation.state.routeName,
-    });
 
     navigateToSubscriptionScreen(navigation, refresh, 'diamond_rectangular');
   };

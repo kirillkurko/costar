@@ -8,16 +8,15 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {NavigationScreenProps, withNavigation} from 'react-navigation';
 
 import {logEvent} from 'src/shared/analytics/FB';
 import {resources} from '../../../shared';
 import Button from 'src/shared/components/Button';
 import {img} from 'assets/img';
 import {colors} from 'src/variables';
-import {AmplitudeLogEvent} from 'src/shared/analytics/Amplitude';
 import {navigateToSubscriptionScreen} from 'src/shared/analytics/Firebase';
 import styles from './styles';
+import {useNavigation} from '@react-navigation/native';
 
 type Props = {
   title: string,
@@ -25,20 +24,20 @@ type Props = {
   description: string,
   isActivePurchase: boolean,
   id: number,
-  navigation: NavigationScreenProps,
   refresh(): Promise<void>,
   isFetching: boolean,
 };
 
 class PsychomatrixPost extends PureComponent<Props> {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  navigation = useNavigation();
   onPress = (eventItem: string) => {
-    const {navigation, refresh} = this.props;
+    const {refresh} = this.props;
 
     logEvent(`${eventItem}_personality_psychomatrix_unlock_tapped`);
-    AmplitudeLogEvent(`${eventItem}_personality_unlock_tapped`);
 
     navigateToSubscriptionScreen(
-      navigation,
+      this.navigation,
       refresh,
       `${eventItem}_personality_unlock_tapped`,
     );
@@ -106,4 +105,4 @@ class PsychomatrixPost extends PureComponent<Props> {
   }
 }
 
-export default withNavigation(PsychomatrixPost);
+export default PsychomatrixPost;
