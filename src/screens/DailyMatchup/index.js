@@ -7,11 +7,16 @@ import {connect} from 'react-redux';
 import {ScrollIntoView, wrapScrollView} from 'react-native-scroll-into-view';
 import SwitchSelector from 'react-native-switch-selector';
 
-import {Header, Prognosis} from 'src/components';
-import resources from 'src/shared/i18n/configuration';
-import {getJoinedDate} from 'src/helpers';
-import purchasesInteractions from 'src/shared/purchases/interactions';
-import {img} from 'assets/img';
+import {
+  FixedButton,
+  Header,
+  Prognosis,
+  SubscriptionBigButton,
+} from '../../components';
+import {resources} from '../../shared/index';
+import {getJoinedDate} from '../../helpers';
+import purchasesInteractions from '../../shared/purchases/interactions';
+import {img} from '../../../assets/img';
 
 import {
   getFAQ,
@@ -19,10 +24,8 @@ import {
   getPrognosisToday,
   getPrognosisTomorrow,
   getPrognosisYesterday,
-} from 'src/store/actions';
-import FixedButton from 'src/components/common/FixedButton';
+} from '../../store/actions';
 import styles from './styles';
-import SubscriptionBigButton from 'src/components/common/SubscriptionBigButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 
