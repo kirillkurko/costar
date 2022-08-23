@@ -13,9 +13,9 @@ import {resources} from '../../../shared';
 import Button from 'src/shared/components/Button';
 import {img} from 'assets/img';
 import {colors} from 'src/variables';
-import {navigateToSubscriptionScreen} from 'src/shared/analytics/Firebase';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
+import {RootStackNavigatorRouts} from '../../../variables/navigationRouts';
 
 type Props = {
   title: string,
@@ -31,13 +31,7 @@ class PsychomatrixPost extends PureComponent<Props> {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   navigation = useNavigation();
   onPress = (eventItem: string) => {
-    const {refresh} = this.props;
-
-    navigateToSubscriptionScreen(
-      this.navigation,
-      refresh,
-      `${eventItem}_personality_unlock_tapped`,
-    );
+    this.navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant);
   };
 
   render() {
