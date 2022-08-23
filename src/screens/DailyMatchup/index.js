@@ -13,7 +13,7 @@ import {
   Prognosis,
   SubscriptionBigButton,
 } from '../../components';
-import {resources} from '../../shared/index';
+import {resources} from '../../shared';
 import {getJoinedDate} from '../../helpers';
 import purchasesInteractions from '../../shared/purchases/interactions';
 import {img} from '../../../assets/img';

@@ -5,7 +5,7 @@ import Purchases from 'react-native-purchases';
 import type {Dispatch} from 'redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import * as actions from 'src/store/actions';
+import * as actions from '../../store/actions';
 import {REVENUECAT_PUBLIC_SDK_KEY} from './constants';
 import type {PurchasesPackageType} from './types';
 

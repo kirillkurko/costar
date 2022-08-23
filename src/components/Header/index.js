@@ -3,11 +3,11 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-import I18n from 'src/shared/i18n/configuration';
-import SingleDatePicker from 'src/components/DatePickers/SingleDatePicker';
-import DoubleDatePicker from 'src/components/DatePickers/DoubleDatePicker';
-import {wp} from 'src/helpers';
-import {colors, fonts} from 'src/variables';
+import {resources} from '../../shared';
+import SingleDatePicker from '../../components/DatePickers/SingleDatePicker';
+import DoubleDatePicker from '../../components/DatePickers/DoubleDatePicker';
+import {wp} from '../../helpers';
+import {colors, fonts} from '../../variables';
 import {img} from '../../../assets/img';
 
 type Props = {
@@ -39,7 +39,7 @@ const Header = ({
 }: Props) => (
   <View style={styles.header}>
     <Text style={styles.title}>{title}</Text>
-    {I18n.t('PREFERENCES.REQUEST_LANGUAGE') === 'en' && (
+    {resources.t('PREFERENCES.REQUEST_LANGUAGE') === 'en' && (
       <TouchableOpacity
         hitSlop={styles.touchableArea}
         onPress={onQuestionPress}
@@ -47,7 +47,9 @@ const Header = ({
         <Image source={img.feedback.question} style={styles.questionIcon} />
       </TouchableOpacity>
     )}
-    <Text style={styles.subtitle}>{I18n.t('PERSONALITY.SCREEN_SUBTITLE')}</Text>
+    <Text style={styles.subtitle}>
+      {resources.t('PERSONALITY.SCREEN_SUBTITLE')}
+    </Text>
     {typeDatePicker === 'single' ? (
       <SingleDatePicker
         userBirthDateParts={userBirthDateParts}
