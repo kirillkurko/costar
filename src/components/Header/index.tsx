@@ -1,27 +1,23 @@
-// @flow
-
 import React from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-
-import {resources} from '../../shared';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { resources } from '../../shared';
 import SingleDatePicker from '../../components/DatePickers/SingleDatePicker';
 import DoubleDatePicker from '../../components/DatePickers/DoubleDatePicker';
-import {wp} from '../../helpers';
-import {colors, fonts} from '../../variables';
-import {img} from 'assets/img';
+import { img } from '../../../assets/img';
+import { styles } from './styles';
 
 type Props = {
-  onQuestionPress(): ?void,
-  userBirthDateParts: ?Array<string>,
-  onDateChange(string): ?void,
-  title: string,
-  typeDatePicker: ?string,
-  firstDateParts: ?Array<string>,
-  secondDateParts: ?Array<string>,
-  onFirstDateChange(): ?void,
-  onSecondDateChange(): ?void,
-  isWomanRipple: ?boolean,
-  isManRipple: ?boolean,
+  onQuestionPress?: () => void;
+  userBirthDateParts: string[];
+  onDateChange?: (date: string) => void;
+  title: string;
+  typeDatePicker?: string;
+  firstDateParts?: string[];
+  secondDateParts?: string[];
+  onFirstDateChange?: () => void;
+  onSecondDateChange?: () => void;
+  isWomanRipple?: boolean;
+  isManRipple?: boolean;
 };
 
 const Header = ({
@@ -69,38 +65,3 @@ const Header = ({
 );
 
 export default React.memo<Props>(Header);
-
-const styles = StyleSheet.create({
-  header: {
-    width: wp('100%'),
-    alignItems: 'center',
-    marginTop: 40,
-  },
-  title: {
-    fontFamily: fonts.sfProSemibold,
-    fontSize: 24,
-    lineHeight: 29,
-    color: colors.white,
-  },
-  touchableArea: {
-    top: 10,
-    bottom: 10,
-    left: 10,
-    right: 10,
-  },
-  questionIconContainer: {
-    position: 'absolute',
-    right: 16,
-  },
-  questionIcon: {
-    width: 22,
-    height: 22,
-  },
-  subtitle: {
-    fontFamily: fonts.sfProRegular,
-    fontSize: 16,
-    lineHeight: 19,
-    marginTop: 16,
-    color: colors.gray,
-  },
-});
