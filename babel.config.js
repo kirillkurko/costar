@@ -20,6 +20,7 @@ module.exports = {
           '@utils': './src/utils',
           '@assets': './src/assets',
           '@screens': './src/screens',
+          '@variables': './src/variables',
         },
       },
     ],
