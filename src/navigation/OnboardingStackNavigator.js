@@ -1,6 +1,6 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {OnboardingStackNavigatorRouts} from '../variables/navigationRouts';
+import { createStackNavigator } from '@react-navigation/stack';
+import { OnboardingStackNavigatorRouts } from '@variables/navigationRoutes';
 
 const OnboardingStack = createStackNavigator();
 

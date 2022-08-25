@@ -1,6 +1,6 @@
 // @flow
 
-const fonts = {
+export const fonts = {
   /* Montserrat */
   montserratExtraLight: 'Montserrat-ExtraLight',
   montserratRegular: 'Montserrat-Regular',
@@ -22,5 +22,3 @@ const fonts = {
   sfProSemibold: 'SFProDisplay-Semibold',
   sfProBold: 'SFProDisplay-Bold',
 };
-
-export {fonts};

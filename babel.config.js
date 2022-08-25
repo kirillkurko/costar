@@ -21,6 +21,7 @@ module.exports = {
           '@assets': './src/assets',
           '@screens': './src/screens',
           '@variables': './src/variables',
+          '@helpers': './src/helpers',
         },
       },
     ],

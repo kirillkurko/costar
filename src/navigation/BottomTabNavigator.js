@@ -1,14 +1,14 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {BottomTabNavigatorRouts} from '../variables/navigationRouts';
-import {Text, View} from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabNavigatorRouts } from '../variables/navigationRoutes';
+import { Text, View } from 'react-native';
 import DailyMatchup from '../screens/DailyMatchup';
 
 const Tab = createBottomTabNavigator();
 
 function PersonalityScreen() {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Personality!</Text>
     </View>
   );
@@ -16,7 +16,7 @@ function PersonalityScreen() {
 
 function DailyScreen() {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Daily!</Text>
     </View>
   );
@@ -24,7 +24,7 @@ function DailyScreen() {
 
 function CompatibilityScreen() {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Compatibility!</Text>
     </View>
   );
