@@ -1,10 +1,10 @@
 // @flow
 
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import {colors, fonts} from '../../variables';
-import {wp} from '../../helpers';
-import {ifIphoneX} from 'react-native-iphone-x-helper';
+import { colors, fonts } from '../../variables';
+import { wp } from '../../helpers';
+import { ifIphoneX } from 'react-native-iphone-x-helper';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
   viewContainer: {
     flex: 1,
-    ...ifIphoneX({paddingTop: 20}, {paddingTop: 0}),
+    ...ifIphoneX({ paddingTop: 20 }, { paddingTop: 0 }),
   },
   switchButtonsContainer: {
     width: wp('100%') - 28,

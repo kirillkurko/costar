@@ -28,6 +28,7 @@ import {
 import styles from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContext } from '@react-navigation/native';
+import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
 
 type State = {
   userBirthDateParts: Array<string>,
@@ -154,9 +155,10 @@ class DailyMatchup extends PureComponent<Props, State> {
   };
 
   onQuestionPress = () => {
-    const { navigation, dispatch } = this.props;
+    const { dispatch } = this.props;
     dispatch(getFAQ());
-    navigation.navigate('Feedback');
+    let navigation = this.context;
+    navigation.navigate(RootStackNavigatorRouts.Feedback);
   };
 
   onSwitch = (value) => {

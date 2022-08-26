@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import BottomTabNavigator from './src/navigation/BottomTabNavigator';
+import RootStackNavigator from './src/navigation/RootStackNavigator';
 import { Provider } from 'react-redux';
 import store from 'src/store';
 import { persistStore } from 'redux-persist';
@@ -17,7 +17,7 @@ const App = () => {
       <PersistGate loading={null} persistor={persistor}>
         <NavigationContainer>
           <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-          <BottomTabNavigator />
+          <RootStackNavigator />
         </NavigationContainer>
       </PersistGate>
     </Provider>

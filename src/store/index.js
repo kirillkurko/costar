@@ -1,4 +1,8 @@
-import { applyMiddleware, compose, createStore } from 'redux';
+import {
+  applyMiddleware,
+  compose,
+  legacy_createStore as createStore,
+} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import rootReducers from './reducers';
 import { watcherSaga } from './saga/watcher/watcherSaga';
