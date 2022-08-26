@@ -1,6 +1,6 @@
 // @flow
 
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import {
   ActivityIndicator,
   Image,
@@ -9,13 +9,13 @@ import {
   View,
 } from 'react-native';
 
-import {resources} from '../../../shared';
+import { resources } from '../../../shared';
 import Button from 'src/shared/components/Button';
-import {img} from 'assets/img';
-import {colors} from 'src/variables';
+import { img } from 'assets/img';
+import { colors } from 'src/variables';
 import styles from './styles';
-import {useNavigation} from '@react-navigation/native';
-import {RootStackNavigatorRouts} from '../../../variables/navigationRouts';
+import { NavigationContext } from '@react-navigation/native';
+import { RootStackNavigatorRouts } from '../../../variables/navigationRouts';
 
 type Props = {
   title: string,
@@ -28,14 +28,14 @@ type Props = {
 };
 
 class PsychomatrixPost extends PureComponent<Props> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  navigation = useNavigation();
+  static contextType = NavigationContext;
   onPress = (eventItem: string) => {
-    this.navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant);
+    let navigation = this.context;
+    navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant);
   };
 
   render() {
-    const {title, description, isActivePurchase, isFetching, titleIcon, id} =
+    const { title, description, isActivePurchase, isFetching, titleIcon, id } =
       this.props;
     return (
       <View style={styles.container}>
@@ -45,14 +45,14 @@ class PsychomatrixPost extends PureComponent<Props> {
               <View style={styles.titleContainer}>
                 <Image
                   source={titleIcon}
-                  resizeMode="contain"
+                  resizeMode='contain'
                   style={styles.titleIcon}
                 />
                 <Text style={styles.title}>{title}</Text>
                 {isFetching && (
                   <ActivityIndicator
                     style={styles.activityIndicator}
-                    size="large"
+                    size='large'
                     color={colors.violet}
                   />
                 )}
@@ -69,7 +69,7 @@ class PsychomatrixPost extends PureComponent<Props> {
                 <View style={styles.titleContainer}>
                   <Image
                     source={titleIcon}
-                    resizeMode="contain"
+                    resizeMode='contain'
                     style={styles.titleIcon}
                   />
                   <Text style={styles.title}>{title}</Text>
@@ -86,7 +86,7 @@ class PsychomatrixPost extends PureComponent<Props> {
             </View>
             <Image
               source={img.main.lockIcon}
-              resizeMode="contain"
+              resizeMode='contain'
               style={styles.lockIcon}
             />
           </TouchableOpacity>

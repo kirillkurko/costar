@@ -1,6 +1,7 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import {Text, View, ViewPropTypes} from 'react-native';
+import { Text, View } from 'react-native';
+import { ViewPropTypes } from 'deprecated-react-native-prop-types';
 import {
   Defs,
   G,
@@ -10,7 +11,7 @@ import {
   Stop,
   Svg,
 } from 'react-native-svg';
-import {wp} from '../../helpers';
+import { wp } from '../../helpers';
 
 import styles from './styles';
 
@@ -43,7 +44,7 @@ export default class CircularProgress extends PureComponent {
     return d.join(' ');
   }
 
-  clampFill = fill => Math.min(100, Math.max(0, fill));
+  clampFill = (fill) => Math.min(100, Math.max(0, fill));
 
   render() {
     const {
@@ -103,40 +104,40 @@ export default class CircularProgress extends PureComponent {
           <Svg
             width={size}
             height={size}
-            style={{backgroundColor: 'transparent'}}>
+            style={{ backgroundColor: 'transparent' }}>
             <G rotation={rotation} originX={size / 2} originY={size / 2}>
               <Defs>
-                <LinearGradient id="innerGrad" x1="0" y1="0" x2="120" y2="0">
-                  <Stop offset="0" stopColor="#462DA1" stopOpacity="0.2" />
-                  <Stop offset="1" stopColor="#5033AE" stopOpacity="0.6" />
+                <LinearGradient id='innerGrad' x1='0' y1='0' x2='120' y2='0'>
+                  <Stop offset='0' stopColor='#462DA1' stopOpacity='0.2' />
+                  <Stop offset='1' stopColor='#5033AE' stopOpacity='0.6' />
                 </LinearGradient>
                 <RadialGradient
-                  id="grad"
-                  cx="150"
-                  cy="75"
-                  rx="85"
-                  ry="55"
-                  fx="150"
-                  fy="75"
-                  gradientUnits="userSpaceOnUse">
-                  <Stop offset="0" stopColor="#451c84" stopOpacity="1" />
-                  <Stop offset="1" stopColor="#6311ad" stopOpacity="1" />
+                  id='grad'
+                  cx='150'
+                  cy='75'
+                  rx='85'
+                  ry='55'
+                  fx='150'
+                  fy='75'
+                  gradientUnits='userSpaceOnUse'>
+                  <Stop offset='0' stopColor='#451c84' stopOpacity='1' />
+                  <Stop offset='1' stopColor='#6311ad' stopOpacity='1' />
                 </RadialGradient>
               </Defs>
               <Path
                 d={backgroundPath}
-                stroke="url(#grad)"
+                stroke='url(#grad)'
                 strokeWidth={backgroundWidth || width}
                 strokeLinecap={lineCap}
-                fill="url(#innerGrad)"
+                fill='url(#innerGrad)'
               />
               {fill > 0 && (
                 <Path
                   d={circlePath}
-                  stroke="#977cff"
+                  stroke='#977cff'
                   strokeWidth={width}
                   strokeLinecap={lineCap}
-                  fill="transparent"
+                  fill='transparent'
                 />
               )}
             </G>
@@ -174,5 +175,5 @@ CircularProgress.defaultProps = {
   arcSweepAngle: 360,
   size: wp('58.454%'),
   width: wp('3.623%'),
-  style: {borderRadius: 500},
+  style: { borderRadius: 500 },
 };

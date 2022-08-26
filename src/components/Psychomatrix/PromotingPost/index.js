@@ -1,29 +1,31 @@
 // @flow
 
-import React, {PureComponent} from 'react';
-import {Image, Text, View} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Image, Text, View } from 'react-native';
 
 import Button from 'src/shared/components/Button';
 import couple1 from 'assets/images/psychomatrix/post/couple1.png';
 import couple2 from 'assets/images/psychomatrix/post/couple2.png';
-import {resources} from '../../../shared';
+import { resources } from '../../../shared';
 import styles from './styles';
-import {useNavigation} from '@react-navigation/native';
+import { NavigationContext } from '@react-navigation/native';
 
 type Props = {
   index: number,
 };
 
 class PromotingPost extends PureComponent<Props> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  navigation = useNavigation();
+  static contextType = NavigationContext;
+
   onPress = () => {
-    const {index} = this.props;
-    this.navigation.navigate('DoubleMatchup');
+    const { index } = this.props;
+
+    let navigation = this.context;
+    navigation.navigate('DoubleMatchup');
   };
 
   render() {
-    const {index} = this.props;
+    const { index } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.leftContainer}>

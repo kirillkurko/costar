@@ -1,10 +1,10 @@
 // @flow
 
-import React, {PureComponent} from 'react';
-import {ImageBackground, ScrollView, View} from 'react-native';
+import React, { PureComponent } from 'react';
+import { ImageBackground, ScrollView, View } from 'react-native';
 
-import {connect} from 'react-redux';
-import {ScrollIntoView, wrapScrollView} from 'react-native-scroll-into-view';
+import { connect } from 'react-redux';
+import { ScrollIntoView, wrapScrollView } from 'react-native-scroll-into-view';
 import SwitchSelector from 'react-native-switch-selector';
 
 import {
@@ -13,10 +13,10 @@ import {
   Prognosis,
   SubscriptionBigButton,
 } from '../../components';
-import {resources} from '../../shared';
-import {getJoinedDate} from '../../helpers';
+import { resources } from '../../shared';
+import { getJoinedDate } from '../../helpers';
 import purchasesInteractions from '../../shared/purchases/interactions';
-import {img} from '../../../assets/img';
+import { img } from '../../../assets/img';
 
 import {
   getFAQ,
@@ -27,7 +27,7 @@ import {
 } from '../../store/actions';
 import styles from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useNavigation} from '@react-navigation/native';
+import { NavigationContext } from '@react-navigation/native';
 
 type State = {
   userBirthDateParts: Array<string>,
@@ -75,8 +75,7 @@ class DailyMatchup extends PureComponent<Props, State> {
   scrollView: ScrollView;
 
   matrixRef = React.createRef<any>();
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  navigation = useNavigation();
+  static contextType = NavigationContext;
 
   scrollIntoViewOptions = {
     align: 'top',
@@ -86,7 +85,7 @@ class DailyMatchup extends PureComponent<Props, State> {
   };
 
   onDidFocus = async () => {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
 
     let userBirthDate = await AsyncStorage.getItem('userBirthDateDaily');
     if (!userBirthDate) {
@@ -98,7 +97,7 @@ class DailyMatchup extends PureComponent<Props, State> {
       userBirthDateParts,
     });
 
-    AsyncStorage.getItem('purchaseButtonVisibility').then(value => {
+    AsyncStorage.getItem('purchaseButtonVisibility').then((value) => {
       this.setState({
         purchaseButtonVisible: JSON.parse(value) !== false,
       });
@@ -115,21 +114,23 @@ class DailyMatchup extends PureComponent<Props, State> {
   };
 
   async componentDidMount() {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
 
     dispatch(getFeedbackLinks());
-    this.navigation.addListener('focus', this.onDidFocus);
+    let navigation = this.context;
+    navigation.addListener('focus', this.onDidFocus);
   }
 
   componentWillUnmount() {
-    this.navigation.removeListener('focus', this.onDidFocus);
+    let navigation = this.context;
+    navigation.removeListener('focus', this.onDidFocus);
   }
 
-  onDateChange = async userBirthDate => {
-    const {dispatch} = this.props;
+  onDateChange = async (userBirthDate) => {
+    const { dispatch } = this.props;
     await AsyncStorage.setItem('userBirthDateDaily', userBirthDate);
     const userBirthDateParts = userBirthDate.split(':');
-    this.setState({userBirthDateParts});
+    this.setState({ userBirthDateParts });
     const date = getJoinedDate(userBirthDateParts);
     if (date) {
       dispatch(getPrognosisToday(date));
@@ -144,29 +145,29 @@ class DailyMatchup extends PureComponent<Props, State> {
       await purchasesInteractions.getPurchaseStatus();
 
       const status = await AsyncStorage.getItem('isActivePurchase').then(
-        value => JSON.parse(value),
+        (value) => JSON.parse(value),
       );
-      this.setState({isActivePurchase: status});
+      this.setState({ isActivePurchase: status });
     } catch (error) {
       console.log(error);
     }
   };
 
   onQuestionPress = () => {
-    const {navigation, dispatch} = this.props;
+    const { navigation, dispatch } = this.props;
     dispatch(getFAQ());
     navigation.navigate('Feedback');
   };
 
-  onSwitch = value => {
-    this.setState({section: value});
+  onSwitch = (value) => {
+    this.setState({ section: value });
   };
 
-  onScroll = ({nativeEvent}) => {
+  onScroll = ({ nativeEvent }) => {
     if (nativeEvent.contentOffset.y >= 400) {
-      this.setState({shouldShowFixedButton: true});
+      this.setState({ shouldShowFixedButton: true });
     } else {
-      this.setState({shouldShowFixedButton: false});
+      this.setState({ shouldShowFixedButton: false });
     }
     const buttonY = this.state.buttonBottom;
     const prevY = this.state.scrollY;
@@ -177,7 +178,7 @@ class DailyMatchup extends PureComponent<Props, State> {
         scrollY: nativeEvent.contentOffset.y,
       });
     } else {
-      this.setState({scrollY: nativeEvent.contentOffset.y});
+      this.setState({ scrollY: nativeEvent.contentOffset.y });
     }
   };
 
@@ -190,8 +191,12 @@ class DailyMatchup extends PureComponent<Props, State> {
       purchaseButtonVisible,
       buttonBottom,
     } = this.state;
-    const {prognosisToday, prognosisTomorrow, prognosisYesterday, isFetching} =
-      this.props;
+    const {
+      prognosisToday,
+      prognosisTomorrow,
+      prognosisYesterday,
+      isFetching,
+    } = this.props;
 
     let data = prognosisToday;
 
@@ -225,7 +230,7 @@ class DailyMatchup extends PureComponent<Props, State> {
               />
             )}
             <CustomScrollView
-              ref={ref => {
+              ref={(ref) => {
                 this.scrollView = ref;
               }}
               onScroll={this.onScroll}>
@@ -235,7 +240,7 @@ class DailyMatchup extends PureComponent<Props, State> {
                   onQuestionPress={this.onQuestionPress}
                   userBirthDateParts={userBirthDateParts}
                   onDateChange={this.onDateChange}
-                  typeDatePicker="single"
+                  typeDatePicker='single'
                 />
                 <ScrollIntoView
                   ref={this.matrixRef}
@@ -245,11 +250,11 @@ class DailyMatchup extends PureComponent<Props, State> {
                     options={options}
                     style={styles.switchButtonsContainer}
                     height={32}
-                    backgroundColor="transparent"
+                    backgroundColor='transparent'
                     initial={1}
                     textStyle={styles.switchText}
                     selectedTextStyle={styles.switchSelectedText}
-                    buttonColor="transparent"
+                    buttonColor='transparent'
                     onPress={this.onSwitch}
                     textContainerStyle={styles.switchTextContainerStyle}
                     selectedTextContainerStyle={
@@ -272,7 +277,7 @@ class DailyMatchup extends PureComponent<Props, State> {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   singleCompatibility: state.singleCompatibility,
   prognosisToday: state.prognosisToday,
   prognosisTomorrow: state.prognosisTomorrow,

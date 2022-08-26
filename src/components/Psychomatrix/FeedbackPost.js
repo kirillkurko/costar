@@ -1,20 +1,20 @@
 // @flow
 
-import React, {useCallback} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {connect} from 'react-redux';
+import React, { useCallback } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux';
 
 import Button from 'src/shared/components/Button';
-import {resources} from '../../shared';
-import {colors, fonts} from 'src/variables';
-import {wp} from 'src/helpers';
-import {useNavigation} from '@react-navigation/native';
+import { resources } from '../../shared';
+import { colors, fonts } from 'src/variables';
+import { wp } from 'src/helpers';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = {
   getFAQ(): void,
 };
 
-const FeedbackPost = ({getFAQ}: Props) => {
+const FeedbackPost = ({ getFAQ }: Props) => {
   const navigation = useNavigation();
   const onPress = useCallback(() => {
     navigation.navigate('Feedback');
@@ -40,7 +40,7 @@ const FeedbackPost = ({getFAQ}: Props) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   getFAQ: () =>
     dispatch({
       type: 'GET_FAQ_REQUEST',
