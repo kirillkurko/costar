@@ -1,6 +1,6 @@
 // @flow
 
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import {
   ActivityIndicator,
   Image,
@@ -10,13 +10,13 @@ import {
   View,
 } from 'react-native';
 
-import {resources} from '../../shared';
+import { resources } from '../../shared';
 import Button from 'src/shared/components/Button';
-import {wp} from 'src/helpers';
-import {colors, fonts} from 'src/variables';
-import {img} from 'assets/img';
-import {navigateToSubscriptionScreen} from 'src/shared/analytics/Firebase';
-import {useNavigation} from '@react-navigation/native';
+import { wp } from 'src/helpers';
+import { colors, fonts } from 'src/variables';
+import { img } from 'assets/img';
+import { navigateToSubscriptionScreen } from 'src/shared/analytics/Firebase';
+import { NavigationContext } from '@react-navigation/native';
 
 type Props = {
   isFetching: boolean,
@@ -31,12 +31,12 @@ type Props = {
 };
 
 export class Card extends PureComponent<Props> {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  navigation = useNavigation();
+  static contextType = NavigationContext;
   onPress = (eventItem: string) => {
-    const {refresh} = this.props;
+    let navigation = this.context;
+    const { refresh } = this.props;
 
-    navigateToSubscriptionScreen(this.navigation, refresh, eventItem);
+    navigateToSubscriptionScreen(navigation, refresh, eventItem);
   };
 
   render() {
@@ -67,7 +67,7 @@ export class Card extends PureComponent<Props> {
                 {titleIcon ? (
                   <Image
                     source={titleIcon}
-                    resizeMode="contain"
+                    resizeMode='contain'
                     style={styles.titleIcon}
                   />
                 ) : null}
@@ -75,7 +75,7 @@ export class Card extends PureComponent<Props> {
                 {isFetching && (
                   <ActivityIndicator
                     style={styles.activityIndicator}
-                    size="large"
+                    size='large'
                     color={colors.violet}
                   />
                 )}
@@ -106,7 +106,7 @@ export class Card extends PureComponent<Props> {
                   {titleIcon ? (
                     <Image
                       source={titleIcon}
-                      resizeMode="contain"
+                      resizeMode='contain'
                       style={styles.titleIcon}
                     />
                   ) : null}
@@ -124,7 +124,7 @@ export class Card extends PureComponent<Props> {
             </View>
             <Image
               source={img.main.lockIcon}
-              resizeMode="contain"
+              resizeMode='contain'
               style={styles.lockIcon}
             />
           </TouchableOpacity>

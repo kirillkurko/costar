@@ -1,20 +1,20 @@
 // @flow
 
-import {Alert} from 'react-native';
+import { Alert } from 'react-native';
 import Purchases from 'react-native-purchases';
-import type {Dispatch} from 'redux';
+import type { Dispatch } from 'redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import * as actions from '../../store/actions';
-import {REVENUECAT_PUBLIC_SDK_KEY} from './constants';
-import type {PurchasesPackageType} from './types';
+import { REVENUECAT_PUBLIC_SDK_KEY } from './constants';
+import type { PurchasesPackageType } from './types';
 
 const setup = () => Purchases.setup(REVENUECAT_PUBLIC_SDK_KEY);
 
 const setDebugLogsEnabled = () => Purchases.setDebugLogsEnabled(true);
 
 const purchasePackage = async (purchase: PurchasesPackageType) => {
-  const {purchaserInfo} = await Purchases.purchasePackage(purchase);
+  const { purchaserInfo } = await Purchases.purchasePackage(purchase);
   if (
     purchaserInfo &&
     purchaserInfo.activeSubscriptions &&
@@ -55,7 +55,7 @@ const getOfferings = () => Purchases.getOfferings();
 
 const setAvailablePurchases = () => async (dispatch: Dispatch) => {
   try {
-    const {current} = await getOfferings();
+    const { current } = await getOfferings();
     if (current && current.availablePackages) {
       dispatch(actions.setAvailablePurchases(current.availablePackages));
     }

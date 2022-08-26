@@ -24,7 +24,9 @@ function CompatibilityScreen() {
 
 const BottomTabNavigator = () => {
   return (
-    <Tab.Navigator initialRouteName={BottomTabNavigatorRouts.Daily}>
+    <Tab.Navigator
+      initialRouteName={BottomTabNavigatorRouts.Daily}
+      screenOptions={{ headerShown: false }}>
       <Tab.Screen
         name={BottomTabNavigatorRouts.Personality}
         component={PersonalityScreen}
@@ -32,7 +34,6 @@ const BottomTabNavigator = () => {
       <Tab.Screen
         name={BottomTabNavigatorRouts.Daily}
         component={DailyMatchup}
-        options={{ headerShown: false }}
       />
       <Tab.Screen
         name={BottomTabNavigatorRouts.Compatibility}

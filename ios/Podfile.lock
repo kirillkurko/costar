@@ -367,6 +367,8 @@ PODS:
     - React-Core
   - RNGestureHandler (2.6.0):
     - React-Core
+  - RNIap (10.0.1):
+    - React-Core
   - RNLocalize (2.2.3):
     - React-Core
   - RNPurchases (5.0.0):
@@ -443,6 +445,7 @@ DEPENDENCIES:
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNIap (from `../node_modules/react-native-iap`)
   - RNLocalize (from `../node_modules/react-native-localize`)
   - RNPurchases (from `../node_modules/react-native-purchases`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -542,6 +545,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/datetimepicker"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNIap:
+    :path: "../node_modules/react-native-iap"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
   RNPurchases:
@@ -605,6 +610,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 0c357f3156fcb16c8589ede67cc036330b6698ca
   RNDateTimePicker: 4f1fc917f5af9d9ae4c5fc0c63a4474d61338693
   RNGestureHandler: 920eb17f5b1e15dae6e5ed1904045f8f90e0b11e
+  RNIap: b127a719a3b67deafc522943f5a714ee6e6b7403
   RNLocalize: a64514b46a01375fdfae9349036b4dc7130333b5
   RNPurchases: 4f7e098cdcd65ee03eb77491eba2bf3533767c65
   RNScreens: 0df01424e9e0ed7827200d6ed1087ddd06c493f9

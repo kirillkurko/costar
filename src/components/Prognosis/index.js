@@ -1,12 +1,12 @@
 // @flow
 
-import React, {PureComponent} from 'react';
-import {Text, View} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View } from 'react-native';
 
-import {resources} from '../../shared';
-import {Card} from '../common';
+import { resources } from '../../shared';
+import { Card } from '../common';
 import FeedbackPost from '../Psychomatrix/FeedbackPost';
-import {img} from '../../../assets/img';
+import { img } from '../../../assets/img';
 import styles from './styles';
 
 type DataType = {
@@ -34,10 +34,10 @@ class Prognosis extends PureComponent<Props> {
   };
 
   renderItem = (title, description, id, icon) => {
-    const {isActivePurchase, refresh, isFetching} = this.props;
+    const { isActivePurchase, refresh, isFetching } = this.props;
     return (
       <Card
-        eventSource="daily"
+        eventSource='daily'
         title={title}
         titleIcon={icon}
         description={description}
@@ -50,7 +50,7 @@ class Prognosis extends PureComponent<Props> {
   };
 
   render() {
-    const {data} = this.props;
+    const { data } = this.props;
     return data ? (
       <View style={styles.container}>
         <View style={styles.resultContainer}>
