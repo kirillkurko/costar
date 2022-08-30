@@ -1,11 +1,11 @@
 // @flow
 
-import React, {useCallback, useState} from 'react';
-import {Modal, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-import {colors, fonts} from 'src/variables';
-import {resources} from '../i18n/configuration';
+import { colors, fonts } from 'src/variables';
+import { resources } from '../i18n/configuration';
 
 type Props = {
   currentDate: Date,
@@ -27,7 +27,7 @@ const DatePicker = ({
   const handleOnChange = useCallback((event, date) => setValue(date), []);
 
   return (
-    <Modal animationType="fade" transparent visible>
+    <Modal animationType='fade' transparent visible>
       <View style={styles.modalContainer}>
         <TouchableOpacity
           style={styles.touchableArea}
@@ -50,7 +50,7 @@ const DatePicker = ({
           </View>
           <DateTimePicker
             value={value}
-            display="default"
+            display='spinner'
             locale={resources.t('PREFERENCES.LANGUAGE')}
             onChange={handleOnChange}
             timeZoneOffsetInMinutes={new Date().getTimezoneOffset() * -1}
