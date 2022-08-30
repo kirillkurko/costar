@@ -7,14 +7,6 @@ import SingleMatchup from '../screens/SingleMatchup';
 
 const Tab = createBottomTabNavigator();
 
-function PersonalityScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Personality!</Text>
-    </View>
-  );
-}
-
 function CompatibilityScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

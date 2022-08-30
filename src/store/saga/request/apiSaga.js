@@ -55,7 +55,6 @@ export function* getSkills({ userBirthDate }) {
 
 export function* getPrognosisToday({ userBirthDate }) {
   try {
-    console.log('Get prognosis');
     const response = yield call(
       request.getPrognosisRequestToday,
       userBirthDate,
