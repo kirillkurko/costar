@@ -1,6 +1,6 @@
 import axios from 'axios';
 import moment from 'moment';
-import {resources} from '../../../shared';
+import { resources } from '../../../shared';
 
 export function doubleMatchUpRequest(womanBirthDate, manBirthDate) {
   return axios({
@@ -31,6 +31,14 @@ export function getSkillsRequest(userBirthDate) {
 
 export function getPrognosisRequestToday(userBirthDate) {
   const date = moment().format('DDMMYYYY');
+  console.log(
+    axios({
+      method: 'get',
+      url: `http://match-up.me/api/DayPrognosis/${userBirthDate}/${date}/${resources.t(
+        'PREFERENCES.REQUEST_LANGUAGE',
+      )}`,
+    }).then((r) => r.data),
+  );
   return axios({
     method: 'get',
     url: `http://match-up.me/api/DayPrognosis/${userBirthDate}/${date}/${resources.t(

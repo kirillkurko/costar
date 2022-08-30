@@ -33,6 +33,7 @@
     "react-native-screens": "^3.15.0",
     "react-native-scroll-into-view": "^2.0.2",
     "react-native-size-matters": "^0.4.0",
+    "react-native-store-review": "^0.2.1",
     "react-native-svg": "^13.0.0",
     "react-native-switch-selector": "^2.2.1",
     "react-redux": "^8.0.2",

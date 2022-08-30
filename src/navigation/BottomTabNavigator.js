@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabNavigatorRouts } from '../variables/navigationRouts';
 import { Text, View } from 'react-native';
 import DailyMatchup from '../screens/DailyMatchup';
+import SingleMatchup from '../screens/SingleMatchup';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +30,7 @@ const BottomTabNavigator = () => {
       screenOptions={{ headerShown: false }}>
       <Tab.Screen
         name={BottomTabNavigatorRouts.Personality}
-        component={PersonalityScreen}
+        component={SingleMatchup}
       />
       <Tab.Screen
         name={BottomTabNavigatorRouts.Daily}
