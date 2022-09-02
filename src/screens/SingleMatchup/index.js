@@ -28,6 +28,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles';
 import { resources } from '../../shared';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
 
 type State = {
   userBirthDateParts: Array<string>,
@@ -150,7 +151,7 @@ class SingleMatchup extends PureComponent<Props, State> {
   onQuestionPress = () => {
     const { navigation, dispatch } = this.props;
     dispatch(getFAQ());
-    navigation.navigate('Feedback');
+    navigation.navigate(RootStackNavigatorRouts.Feedback);
   };
 
   onScroll = ({ nativeEvent }) => {

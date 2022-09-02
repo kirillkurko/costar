@@ -9,6 +9,7 @@ import { resources } from '../../shared';
 import { colors, fonts } from 'src/variables';
 import { wp } from 'src/helpers';
 import { useNavigation } from '@react-navigation/native';
+import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
 
 type Props = {
   getFAQ(): void,
@@ -17,7 +18,7 @@ type Props = {
 const FeedbackPost = ({ getFAQ }: Props) => {
   const navigation = useNavigation();
   const onPress = useCallback(() => {
-    navigation.navigate('Feedback');
+    navigation.navigate(RootStackNavigatorRouts.Feedback);
     getFAQ();
   }, [navigation]);
 

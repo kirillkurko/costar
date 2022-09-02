@@ -1,19 +1,11 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabNavigatorRouts } from '../variables/navigationRouts';
-import { Text, View } from 'react-native';
 import DailyMatchup from '../screens/DailyMatchup';
 import SingleMatchup from '../screens/SingleMatchup';
+import DoubleMatchup from '../screens/DoubleMatchup';
 
 const Tab = createBottomTabNavigator();
-
-function CompatibilityScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Compatibility!</Text>
-    </View>
-  );
-}
 
 const BottomTabNavigator = () => {
   return (
@@ -30,7 +22,7 @@ const BottomTabNavigator = () => {
       />
       <Tab.Screen
         name={BottomTabNavigatorRouts.Compatibility}
-        component={CompatibilityScreen}
+        component={DoubleMatchup}
       />
     </Tab.Navigator>
   );
