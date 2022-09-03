@@ -1,6 +1,6 @@
 // @flow
 
-import React, {useCallback, useState} from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   Image,
   StyleSheet,
@@ -8,14 +8,14 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
+import { moderateScale } from 'react-native-size-matters';
 
-import {resources} from '../../shared';
+import { resources } from '../../shared';
 import TouchableCircleRipple from 'src/shared/components/TouchableCircle/TouchableCircleRipple';
 import DatePicker from 'src/shared/components/DatePicker';
-import {createDate, getFormattedDate} from 'src/helpers/dateParsers';
-import {colors, fonts} from 'src/variables';
-import {img} from 'assets/img';
+import { createDate, getFormattedDate } from 'src/helpers/dateParsers';
+import { colors, fonts } from 'src/variables';
+import { img } from 'assets/img';
 
 type Props = {
   firstDateParts: Array<string>,
@@ -64,7 +64,7 @@ const DoubleDatePicker = ({
           <Image
             source={img.female}
             style={styles.genderIcon}
-            resizeMode="contain"
+            resizeMode='contain'
           />
           <Text style={styles.genderText}>
             {resources.t('COMPATIBILITY.WOMAN')}
@@ -74,7 +74,7 @@ const DoubleDatePicker = ({
           <Image
             source={img.male}
             style={styles.genderIcon}
-            resizeMode="contain"
+            resizeMode='contain'
           />
           <Text style={styles.genderText}>
             {resources.t('COMPATIBILITY.MAN')}
