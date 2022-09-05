@@ -41,7 +41,9 @@ export default class PercentCircle extends PureComponent {
     const duration = dur || this.props.duration;
     const easing = ease || this.props.easing;
 
-    const anim = Animated.timing(this.state.fillAnimation, {
+    const { fillAnimation } = this.state;
+
+    const anim = Animated.timing(fillAnimation, {
       toValue,
       easing,
       duration,
@@ -54,8 +56,9 @@ export default class PercentCircle extends PureComponent {
 
   render() {
     const { fill, prefill, ...other } = this.props;
+    const { fillAnimation } = this.state;
 
-    return <AnimatedProgress {...other} fill={this.state.fillAnimation} />;
+    return <AnimatedProgress {...other} fill={fillAnimation} />;
   }
 }
 
