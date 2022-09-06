@@ -3,8 +3,7 @@
 import React, { PureComponent } from 'react';
 import { Animated, ImageBackground, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { SafeAreaConsumer } from 'react-native-safe-area-context';
-import DatePicker from 'react-native-date-picker';
+import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 import type { Dispatch as ReduxDispatch } from 'redux';
 
 import { resources } from 'src/shared/i18n/configuration';
@@ -12,7 +11,6 @@ import { img } from 'assets/img';
 import BigButton from 'src/shared/components/BigButton';
 import OnboardingHeader from 'src/components/OnboardingHeader';
 import { Animate } from 'src/helpers/Animations';
-import { colors } from 'src/variables';
 import {
   DeviceSize,
   getDeviceSize,
@@ -29,6 +27,8 @@ import {
 import styles from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { OnboardingStackNavigatorRouts } from '../../../variables/navigationRouts';
+import DatePicker from 'react-native-date-picker';
+import { colors } from '../../../variables';
 
 type Props = {
   dispatch: ReduxDispatch,
@@ -55,7 +55,7 @@ class BirthdayStep extends PureComponent<Props, State> {
 
   onButtonPress = async () => {
     const { date } = this.state;
-    const { dispatch } = this.props;
+    const { dispatch, navigation } = this.props;
     const formattedDate = getFormattedDate(date);
     await AsyncStorage.setItem('userBirthDate', formattedDate);
     await AsyncStorage.setItem('userBirthDateDaily', formattedDate);
@@ -68,7 +68,6 @@ class BirthdayStep extends PureComponent<Props, State> {
       dispatch(getPrognosisYesterday(userBirthDate));
       dispatch(getPrognosisTomorrow(userBirthDate));
     }
-    let navigation = this.context;
     navigation.navigate(OnboardingStackNavigatorRouts.QuestionsStep, {
       number: 0,
     });
@@ -77,7 +76,7 @@ class BirthdayStep extends PureComponent<Props, State> {
   render() {
     const { date, isAnimate } = this.state;
     return (
-      <SafeAreaConsumer>
+      <SafeAreaInsetsContext.Consumer>
         {(insets) => (
           <ImageBackground
             source={img.onboarding.firstBg}
@@ -107,6 +106,7 @@ class BirthdayStep extends PureComponent<Props, State> {
                           ? Animate({
                               duration: 600,
                               delay: 200,
+                              useNativeDriver: true,
                             })
                           : 1,
                       }}
@@ -120,6 +120,7 @@ class BirthdayStep extends PureComponent<Props, State> {
                           ? Animate({
                               duration: 900,
                               delay: 400,
+                              useNativeDriver: true,
                             })
                           : 1,
                       }}
@@ -133,6 +134,7 @@ class BirthdayStep extends PureComponent<Props, State> {
                           ? Animate({
                               duration: 600,
                               delay: 400,
+                              useNativeDriver: true,
                             })
                           : 1,
                       }}
@@ -146,6 +148,7 @@ class BirthdayStep extends PureComponent<Props, State> {
                           ? Animate({
                               duration: 600,
                               delay: 500,
+                              useNativeDriver: true,
                             })
                           : 1,
                       }}
@@ -160,6 +163,7 @@ class BirthdayStep extends PureComponent<Props, State> {
                               {
                                 duration: 600,
                                 delay: 700,
+                                useNativeDriver: true,
                               },
                               this.setIsAnimate,
                             )
@@ -175,6 +179,7 @@ class BirthdayStep extends PureComponent<Props, State> {
                           ? Animate({
                               duration: 600,
                               delay: 400,
+                              useNativeDriver: true,
                             })
                           : 1,
                       }}
@@ -203,7 +208,7 @@ class BirthdayStep extends PureComponent<Props, State> {
             </View>
           </ImageBackground>
         )}
-      </SafeAreaConsumer>
+      </SafeAreaInsetsContext.Consumer>
     );
   }
 }
