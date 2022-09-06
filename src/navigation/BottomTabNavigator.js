@@ -8,10 +8,13 @@ import { colors, fonts } from '../variables';
 import { Image, StyleSheet, Text } from 'react-native';
 import { img } from '../../assets/img';
 import { resources } from '../shared';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
+  const insets = useSafeAreaInsets();
+
   return (
     <Tab.Navigator
       initialRouteName={BottomTabNavigatorRouts.Daily}
@@ -26,6 +29,7 @@ const BottomTabNavigator = () => {
             width: 0,
             height: -1,
           },
+          height: 64 + insets.bottom,
           shadowOpacity: 0.8,
           shadowRadius: 4,
           elevation: 10,
