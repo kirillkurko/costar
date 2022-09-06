@@ -3,6 +3,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { OnboardingStackNavigatorRouts } from '../variables/navigationRouts';
 import NameStep from '../screens/Onboarding/NameStep';
 import BirthdayStep from '../screens/Onboarding/BirthdayStep';
+import ProgressStep from '../screens/Onboarding/ProgressStep';
+import QuestionsStep from '../screens/Onboarding/QuestionsStep';
+import WelcomeStep from '../screens/Onboarding/WelcomeStep';
 
 const OnboardingStack = createStackNavigator();
 
@@ -11,6 +14,7 @@ const OnboardingStackNavigator = () => {
     <OnboardingStack.Navigator>
       <OnboardingStack.Screen
         name={OnboardingStackNavigatorRouts.WelcomeStep}
+        component={WelcomeStep}
       />
       <OnboardingStack.Screen
         name={OnboardingStackNavigatorRouts.NameStep}
@@ -22,9 +26,11 @@ const OnboardingStackNavigator = () => {
       />
       <OnboardingStack.Screen
         name={OnboardingStackNavigatorRouts.ProgressStep}
+        component={ProgressStep}
       />
       <OnboardingStack.Screen
         name={OnboardingStackNavigatorRouts.QuestionsStep}
+        component={QuestionsStep}
       />
     </OnboardingStack.Navigator>
   );

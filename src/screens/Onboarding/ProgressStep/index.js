@@ -3,7 +3,7 @@
 import React, { PureComponent } from 'react';
 import { ImageBackground } from 'react-native';
 import { connect } from 'react-redux';
-import { SafeAreaConsumer } from 'react-native-safe-area-context';
+import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
 
 import { img } from 'assets/img';
 import CircularProgress from 'src/components/PercentCircle/OnboardingCircularProgress';
@@ -29,7 +29,7 @@ class ProgressStep extends PureComponent {
 
   render() {
     return (
-      <SafeAreaConsumer>
+      <SafeAreaInsetsContext.Consumer>
         {(insets) => (
           <ImageBackground
             source={img.onboarding.firstBg}
@@ -52,7 +52,7 @@ class ProgressStep extends PureComponent {
                         /> */}
           </ImageBackground>
         )}
-      </SafeAreaConsumer>
+      </SafeAreaInsetsContext.Consumer>
     );
   }
 }
