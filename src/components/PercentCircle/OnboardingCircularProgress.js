@@ -1,19 +1,19 @@
 // @flow
 
-import React, {useCallback} from 'react';
-import {Animated, Easing, StyleSheet, Text, View} from 'react-native';
-import {AnimatedCircularProgress} from 'react-native-circular-progress';
+import React, { useCallback } from 'react';
+import { Animated, Easing, StyleSheet, Text, View } from 'react-native';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
-import {resources} from '../../shared';
-import {Animate} from 'src/helpers/Animations';
+import { resources } from '../../shared';
+import { Animate } from 'src/helpers/Animations';
 import progressCircle from 'assets/images/onboarding/progressCircle2.png';
-import {colors, fonts} from 'src/variables';
+import { colors, fonts } from 'src/variables';
 
 type Props = {
   navigateToNextScreen(): void,
 };
 
-const OnboardingCircularProgress = ({navigateToNextScreen}: Props) => {
+const OnboardingCircularProgress = ({ navigateToNextScreen }: Props) => {
   const onAnimationComplete = useCallback(() => {
     setTimeout(() => {
       navigateToNextScreen();
@@ -26,11 +26,11 @@ const OnboardingCircularProgress = ({navigateToNextScreen}: Props) => {
         <Animated.Image
           style={{
             ...styles.progressCircleBackground,
-            opacity: Animate({duration: 400}),
+            opacity: Animate({ duration: 400 }),
           }}
           source={progressCircle}
           showWebviewLoader={false}
-          resizeMode="contain"
+          resizeMode='contain'
         />
         <AnimatedCircularProgress
           size={226}
@@ -39,7 +39,7 @@ const OnboardingCircularProgress = ({navigateToNextScreen}: Props) => {
           easing={Easing.ease}
           duration={5000}
           tintColor={colors.yellowGradient[0]}
-          lineCap="round"
+          lineCap='round'
           style={styles.progressCircle}
           tintColorSecondary={colors.yellowGradient[1]}
           onAnimationComplete={onAnimationComplete}

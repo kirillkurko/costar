@@ -1,11 +1,11 @@
 import React from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import RootStackNavigator from './src/navigation/RootStackNavigator';
 import { Provider } from 'react-redux';
 import store from 'src/store';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
+import RootStackNavigator from './src/navigation/RootStackNavigator';
 
 const persistor = persistStore(store);
 

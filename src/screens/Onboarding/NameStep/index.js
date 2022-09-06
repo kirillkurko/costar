@@ -121,7 +121,7 @@ class NameStep extends PureComponent<Props, State> {
     this.textInput.current.blur();
     await AsyncStorage.setItem('name', userName);
     dispatch(setUserName(userName));
-    let navigation = this.context;
+    const { navigation } = this.context;
     navigation.navigate(OnboardingStackNavigatorRouts.BirthdayStep);
   };
 
@@ -157,6 +157,7 @@ class NameStep extends PureComponent<Props, State> {
                         ? Animate({
                             duration: 600,
                             delay: 100,
+                            useNativeDriver: true,
                           })
                         : 1,
                     }}
@@ -171,6 +172,7 @@ class NameStep extends PureComponent<Props, State> {
                         ? Animate({
                             duration: 700,
                             delay: 350,
+                            useNativeDriver: true,
                           })
                         : 1,
                     }}
@@ -185,6 +187,7 @@ class NameStep extends PureComponent<Props, State> {
                         ? Animate({
                             duration: 700,
                             delay: 600,
+                            useNativeDriver: true,
                           })
                         : 1,
                     }}
@@ -199,6 +202,7 @@ class NameStep extends PureComponent<Props, State> {
                         ? Animate({
                             duration: 700,
                             delay: 400,
+                            useNativeDriver: true,
                           })
                         : 1,
                     }}
@@ -213,6 +217,7 @@ class NameStep extends PureComponent<Props, State> {
                         ? Animate({
                             duration: 700,
                             delay: 700,
+                            useNativeDriver: true,
                           })
                         : 1,
                     }}
@@ -228,6 +233,7 @@ class NameStep extends PureComponent<Props, State> {
                             {
                               duration: 700,
                               delay: 800,
+                              useNativeDriver: true,
                             },
                             this.setIsAnimate,
                           )
@@ -244,6 +250,7 @@ class NameStep extends PureComponent<Props, State> {
                         ? Animate({
                             duration: 700,
                             delay: 300,
+                            useNativeDriver: true,
                           })
                         : 1,
                     }}

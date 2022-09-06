@@ -4,6 +4,7 @@ import { RootStackNavigatorRouts } from '../variables/navigationRouts';
 import BottomTabNavigator from './BottomTabNavigator';
 import Feedback from '../screens/Feedback/Feedback';
 import { Text, View } from 'react-native';
+import OnboardingStackNavigator from './OnboardingStackNavigator';
 
 const RootStack = createStackNavigator();
 
@@ -18,8 +19,12 @@ function Sample() {
 const RootStackNavigator = () => {
   return (
     <RootStack.Navigator
-      initialRouteName={RootStackNavigatorRouts.TabNavigator}
+      initialRouteName={RootStackNavigatorRouts.Onboarding}
       screenOptions={{ headerShown: false }}>
+      <RootStack.Screen
+        name={RootStackNavigatorRouts.Onboarding}
+        component={OnboardingStackNavigator}
+      />
       <RootStack.Screen
         name={RootStackNavigatorRouts.TabNavigator}
         component={BottomTabNavigator}

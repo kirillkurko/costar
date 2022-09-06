@@ -58,7 +58,11 @@ const WelcomeStep = ({ setAvailablePurchases }: Props) => {
           <Animated.Image
             style={{
               ...styles.circle,
-              opacity: Animate({ duration: 600, delay: 100 }),
+              opacity: Animate({
+                duration: 600,
+                delay: 100,
+                useNativeDriver: true,
+              }),
             }}
             source={img.onboarding.circleTopShadow}
             showWebviewLoader={false}
@@ -67,7 +71,11 @@ const WelcomeStep = ({ setAvailablePurchases }: Props) => {
           <Animated.Image
             style={{
               ...styles.man,
-              opacity: Animate({ duration: 700, delay: 350 }),
+              opacity: Animate({
+                duration: 700,
+                delay: 350,
+                useNativeDriver: true,
+              }),
             }}
             source={img.onboarding.firstScreenMan}
             showWebviewLoader={false}
@@ -76,7 +84,11 @@ const WelcomeStep = ({ setAvailablePurchases }: Props) => {
           <Animated.Image
             style={{
               ...styles.seven,
-              opacity: Animate({ duration: 700, delay: 600 }),
+              opacity: Animate({
+                duration: 700,
+                delay: 600,
+                useNativeDriver: true,
+              }),
             }}
             source={img.onboarding.seven}
             showWebviewLoader={false}
@@ -85,7 +97,11 @@ const WelcomeStep = ({ setAvailablePurchases }: Props) => {
           <Animated.Image
             style={{
               ...styles.energy,
-              opacity: Animate({ duration: 700, delay: 400 }),
+              opacity: Animate({
+                duration: 700,
+                delay: 400,
+                useNativeDriver: true,
+              }),
             }}
             source={img.onboarding.firstScreenEnergy}
             showWebviewLoader={false}
@@ -94,7 +110,11 @@ const WelcomeStep = ({ setAvailablePurchases }: Props) => {
           <Animated.Image
             style={{
               ...styles.five,
-              opacity: Animate({ duration: 700, delay: 700 }),
+              opacity: Animate({
+                duration: 700,
+                delay: 700,
+                useNativeDriver: true,
+              }),
             }}
             source={img.onboarding.five}
             showWebviewLoader={false}
@@ -103,7 +123,11 @@ const WelcomeStep = ({ setAvailablePurchases }: Props) => {
           <Animated.Image
             style={{
               ...styles.head,
-              opacity: Animate({ duration: 700, delay: 800 }),
+              opacity: Animate({
+                duration: 700,
+                delay: 800,
+                useNativeDriver: true,
+              }),
             }}
             source={img.onboarding.firstScreenHead}
             showWebviewLoader={false}
@@ -112,7 +136,11 @@ const WelcomeStep = ({ setAvailablePurchases }: Props) => {
           <Animated.Image
             style={{
               ...styles.shadow,
-              opacity: Animate({ duration: 700, delay: 300 }),
+              opacity: Animate({
+                duration: 700,
+                delay: 300,
+                useNativeDriver: true,
+              }),
             }}
             source={img.onboarding.shadow}
             showWebviewLoader={false}

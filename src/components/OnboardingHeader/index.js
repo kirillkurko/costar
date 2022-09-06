@@ -1,24 +1,20 @@
 // @flow
 
-import React, {useCallback} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {
-  NavigationScreenProp,
-  NavigationState,
-  withNavigation,
-} from 'react-navigation';
+import React, { useCallback } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import {resources} from '../../shared';
-import {wp} from 'src/helpers';
-import {colors, fonts} from 'src/variables';
-import {img} from '../../../assets/img';
+import { resources } from '../../shared';
+import { wp } from 'src/helpers';
+import { colors, fonts } from 'src/variables';
+import { img } from '../../../assets/img';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = {
   number: number,
-  navigation: NavigationScreenProp<NavigationState>,
 };
 
-const OnboardingHeader = ({navigation, number}: Props) => {
+const OnboardingHeader = ({ number }: Props) => {
+  const navigation = useNavigation();
   const onBackPress = useCallback(() => {
     navigation.pop();
   });
@@ -36,7 +32,7 @@ const OnboardingHeader = ({navigation, number}: Props) => {
   );
 };
 
-export default withNavigation(OnboardingHeader);
+export default OnboardingHeader;
 
 const styles = StyleSheet.create({
   header: {

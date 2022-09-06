@@ -11,7 +11,9 @@ const OnboardingStack = createStackNavigator();
 
 const OnboardingStackNavigator = () => {
   return (
-    <OnboardingStack.Navigator>
+    <OnboardingStack.Navigator
+      initialRouteName={OnboardingStackNavigatorRouts.WelcomeStep}
+      screenOptions={{ headerShown: false }}>
       <OnboardingStack.Screen
         name={OnboardingStackNavigatorRouts.WelcomeStep}
         component={WelcomeStep}
@@ -35,3 +37,5 @@ const OnboardingStackNavigator = () => {
     </OnboardingStack.Navigator>
   );
 };
+
+export default OnboardingStackNavigator;
