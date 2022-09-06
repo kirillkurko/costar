@@ -26,8 +26,6 @@ const QuestionsStep = ({ route, navigation, dispatch }: Props) => {
 
   const { number } = route.params;
 
-  console.log(route.params);
-
   const onPress = useCallback(() => {
     if (number === 2) {
       dispatch(

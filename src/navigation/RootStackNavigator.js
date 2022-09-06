@@ -5,13 +5,15 @@ import BottomTabNavigator from './BottomTabNavigator';
 import Feedback from '../screens/Feedback/Feedback';
 import { Text, View } from 'react-native';
 import OnboardingStackNavigator from './OnboardingStackNavigator';
+import Privacy from '../screens/Privacy';
+import SubscribeFirstVariant from '../screens/Subscribe/SubscribeFirstVariant';
 
 const RootStack = createStackNavigator();
 
 function Sample() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>{RootStackNavigatorRouts.Privacy}</Text>
+      <Text>Sample</Text>
     </View>
   );
 }
@@ -31,7 +33,7 @@ const RootStackNavigator = () => {
       />
       <RootStack.Screen
         name={RootStackNavigatorRouts.Privacy}
-        component={Sample}
+        component={Privacy}
       />
       <RootStack.Screen name={RootStackNavigatorRouts.FAQ} component={Sample} />
       <RootStack.Screen
@@ -40,7 +42,7 @@ const RootStackNavigator = () => {
       />
       <RootStack.Screen
         name={RootStackNavigatorRouts.SubscribeFirstVariant}
-        component={Sample}
+        component={SubscribeFirstVariant}
       />
       <RootStack.Screen
         name={RootStackNavigatorRouts.Gift}

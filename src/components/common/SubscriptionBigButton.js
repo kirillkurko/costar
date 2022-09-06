@@ -1,76 +1,67 @@
 // @flow
 
-import React, {PureComponent} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {colors, fonts} from 'src/variables';
-import {img} from 'assets/img';
-import {wp} from 'src/helpers';
-import {navigateToSubscriptionScreen} from 'src/shared/analytics/Firebase';
+import { colors, fonts } from 'src/variables';
+import { img } from 'assets/img';
+import { wp } from 'src/helpers';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-type State = {
-  isVisible: boolean,
-};
+import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = {
   refresh(): Promise<void>,
   eventSource: string,
 };
 
-export class SubscriptionBigButton extends PureComponent<Props, State> {
-  state = {
-    isVisible: true,
+export const SubscriptionBigButton = (props) => {
+  const [isVisible, setIsVisible] = useState(true);
+  const navigation = useNavigation();
+
+  const onPress = () => {
+    navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant);
   };
 
-  onPress = () => {
-    const {navigation, refresh, eventSource} = this.props;
-
-    navigateToSubscriptionScreen(navigation, refresh, 'diamond_rectangular');
-  };
-
-  onCloseBigButton = () => {
-    this.setState({isVisible: false});
+  const onCloseBigButton = () => {
+    setIsVisible(false);
     AsyncStorage.setItem('purchaseButtonVisibility', JSON.stringify(false));
   };
 
-  render() {
-    const {isVisible} = this.state;
-    const {buttonBottom} = this.props;
-    return isVisible ? (
-      <View style={[styles.container, {bottom: buttonBottom}]}>
-        <LinearGradient
-          colors={colors.yellowGradient}
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 0}}
-          style={styles.gradient}>
+  const { buttonBottom } = props;
+  return isVisible ? (
+    <View style={[styles.container, { bottom: buttonBottom }]}>
+      <LinearGradient
+        colors={colors.yellowGradient}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.gradient}>
+        <TouchableOpacity
+          onPress={onPress}
+          style={styles.subscriptionBigButton}>
           <TouchableOpacity
-            onPress={this.onPress}
-            style={styles.subscriptionBigButton}>
-            <TouchableOpacity
-              style={styles.subscriptionCircleCloseContainer}
-              onPress={this.onCloseBigButton}>
-              <Image
-                source={img.iconClose}
-                style={styles.subscriptionCircleClose}
-              />
-            </TouchableOpacity>
-            <View style={styles.imageContainer}>
-              <Image
-                resizeMode="contain"
-                source={img.iconDiamond}
-                style={styles.subscriptionCircleImage}
-              />
-            </View>
-            <Text style={styles.subscriptionText}>3-Day Free Trial</Text>
-            <Text style={styles.descriptionText}>Try it now!</Text>
+            style={styles.subscriptionCircleCloseContainer}
+            onPress={onCloseBigButton}>
+            <Image
+              source={img.iconClose}
+              style={styles.subscriptionCircleClose}
+            />
           </TouchableOpacity>
-        </LinearGradient>
-      </View>
-    ) : null;
-  }
-}
+          <View style={styles.imageContainer}>
+            <Image
+              resizeMode='contain'
+              source={img.iconDiamond}
+              style={styles.subscriptionCircleImage}
+            />
+          </View>
+          <Text style={styles.subscriptionText}>3-Day Free Trial</Text>
+          <Text style={styles.descriptionText}>Try it now!</Text>
+        </TouchableOpacity>
+      </LinearGradient>
+    </View>
+  ) : null;
+};
 
 const styles = StyleSheet.create({
   container: {

@@ -24,7 +24,9 @@ class ProgressStep extends PureComponent {
     const { navigation } = this.props;
     this.seenOnboarding();
 
-    navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant);
+    navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant, {
+      screen: 'Onboarding',
+    });
   };
 
   render() {
