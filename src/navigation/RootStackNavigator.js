@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { RootStackNavigatorRouts } from '../variables/navigationRouts';
 import BottomTabNavigator from './BottomTabNavigator';
@@ -8,6 +8,7 @@ import OnboardingStackNavigator from './OnboardingStackNavigator';
 import Privacy from '../screens/Privacy';
 import SubscribeFirstVariant from '../screens/Subscribe/SubscribeFirstVariant';
 import Terms from '../screens/Terms';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const RootStack = createStackNavigator();
 
@@ -20,14 +21,25 @@ function Sample() {
 }
 
 const RootStackNavigator = () => {
-  return (
-    <RootStack.Navigator
-      initialRouteName={RootStackNavigatorRouts.Onboarding}
-      screenOptions={{ headerShown: false }}>
-      <RootStack.Screen
-        name={RootStackNavigatorRouts.Onboarding}
-        component={OnboardingStackNavigator}
-      />
+  const [isOnboardingComplete, setIsOnboardingComplete] = useState(null);
+
+  const checkIfOnboardingComplete = async () => {
+    const isComplete = await AsyncStorage.getItem('isSeenOnboarding');
+    setIsOnboardingComplete(!!isComplete);
+  };
+
+  useEffect(() => {
+    checkIfOnboardingComplete();
+  });
+
+  return isOnboardingComplete !== null ? (
+    <RootStack.Navigator screenOptions={{ headerShown: false }}>
+      {!isOnboardingComplete && (
+        <RootStack.Screen
+          name={RootStackNavigatorRouts.Onboarding}
+          component={OnboardingStackNavigator}
+        />
+      )}
       <RootStack.Screen
         name={RootStackNavigatorRouts.TabNavigator}
         component={BottomTabNavigator}
@@ -54,7 +66,7 @@ const RootStackNavigator = () => {
         component={Terms}
       />
     </RootStack.Navigator>
-  );
+  ) : null;
 };
 
 export default RootStackNavigator;
