@@ -14,24 +14,19 @@ import OnboardingHeader from 'src/components/OnboardingHeader';
 import { setSelectedAnswer } from 'src/store/actions';
 import questionsConfiguration from '../questionsConfiguration';
 import styles from './styles';
-import { useNavigation } from '@react-navigation/native';
 import { OnboardingStackNavigatorRouts } from '../../../variables/navigationRouts';
 
 type Props = {
   dispatch: ReduxDispatch,
 };
 
-const QuestionsStep = ({ dispatch }: Props) => {
+const QuestionsStep = ({ route, navigation, dispatch }: Props) => {
   const insets = useSafeAreaInsets();
   const [selected, setSelected] = useState(0);
 
-  const navigation = useNavigation();
+  const { number } = route.params;
 
-  let number = 0;
-
-  if (navigation.state && navigation.state.params) {
-    number = navigation.state.params.number;
-  }
+  console.log(route.params);
 
   const onPress = useCallback(() => {
     if (number === 2) {

@@ -21,7 +21,7 @@ class ProgressStep extends PureComponent {
   };
 
   navigateToSubscribeScreenWithoutOnboarding = async () => {
-    const { navigation } = this.context;
+    const { navigation } = this.props;
     this.seenOnboarding();
 
     navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant);

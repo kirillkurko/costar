@@ -26,7 +26,7 @@ const OnboardingCircularProgress = ({ navigateToNextScreen }: Props) => {
         <Animated.Image
           style={{
             ...styles.progressCircleBackground,
-            opacity: Animate({ duration: 400 }),
+            opacity: Animate({ duration: 400, useNativeDriver: true }),
           }}
           source={progressCircle}
           showWebviewLoader={false}
@@ -48,6 +48,7 @@ const OnboardingCircularProgress = ({ navigateToNextScreen }: Props) => {
           style={{
             opacity: Animate({
               duration: 600,
+              useNativeDriver: true,
             }),
           }}>
           <Text style={styles.text}>
