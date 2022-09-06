@@ -7,6 +7,7 @@ import { Text, View } from 'react-native';
 import OnboardingStackNavigator from './OnboardingStackNavigator';
 import Privacy from '../screens/Privacy';
 import SubscribeFirstVariant from '../screens/Subscribe/SubscribeFirstVariant';
+import Terms from '../screens/Terms';
 
 const RootStack = createStackNavigator();
 
@@ -50,7 +51,7 @@ const RootStackNavigator = () => {
       />
       <RootStack.Screen
         name={RootStackNavigatorRouts.Terms}
-        component={Sample}
+        component={Terms}
       />
     </RootStack.Navigator>
   );

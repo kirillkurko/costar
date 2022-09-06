@@ -137,7 +137,7 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
 
   openTerms = () => {
     const { navigation } = this.props;
-    navigation.navigate('Terms');
+    navigation.navigate(RootStackNavigatorRouts.Terms);
   };
 
   removeSpinner = () => this.setState({ isFetching: false });
