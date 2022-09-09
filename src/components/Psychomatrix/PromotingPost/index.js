@@ -9,6 +9,7 @@ import couple2 from 'assets/images/psychomatrix/post/couple2.png';
 import { resources } from '../../../shared';
 import styles from './styles';
 import { NavigationContext } from '@react-navigation/native';
+import { BottomTabNavigatorRouts } from '../../../variables/navigationRouts';
 
 type Props = {
   index: number,
@@ -21,7 +22,7 @@ class PromotingPost extends PureComponent<Props> {
     const { index } = this.props;
 
     let navigation = this.context;
-    navigation.navigate('DoubleMatchup');
+    navigation.navigate(BottomTabNavigatorRouts.Compatibility);
   };
 
   render() {
