@@ -39,6 +39,8 @@ const QuestionsStep = ({ route, navigation, dispatch }: Props) => {
     }
   }, [selected]);
 
+  console.log(number);
+
   return (
     <ImageBackground
       source={img.onboarding.firstQuestionScreen}
