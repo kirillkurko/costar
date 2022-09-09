@@ -1,14 +1,13 @@
 // @flow
 
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { resources } from '../../shared';
 import SingleDatePicker from '../../components/DatePickers/SingleDatePicker';
 import DoubleDatePicker from '../../components/DatePickers/DoubleDatePicker';
 import { wp } from '../../helpers';
 import { colors, fonts } from '../../variables';
-import { img } from 'assets/img';
 
 type Props = {
   onQuestionPress(): ?void,
@@ -39,14 +38,14 @@ const Header = ({
 }: Props) => (
   <View style={styles.header}>
     <Text style={styles.title}>{title}</Text>
-    {resources.t('PREFERENCES.REQUEST_LANGUAGE') === 'en' && (
+    {/*{resources.t('PREFERENCES.REQUEST_LANGUAGE') === 'en' && (
       <TouchableOpacity
         hitSlop={styles.touchableArea}
         onPress={onQuestionPress}
         style={styles.questionIconContainer}>
         <Image source={img.feedback.question} style={styles.questionIcon} />
       </TouchableOpacity>
-    )}
+    )}*/}
     <Text style={styles.subtitle}>
       {resources.t('PERSONALITY.SCREEN_SUBTITLE')}
     </Text>
