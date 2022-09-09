@@ -118,14 +118,13 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
     this.purchasePackage();
   };
 
-  closeScreen = (closeType: string) => {
+  closeScreen = async (closeType: string) => {
     this.setState({ isFetching: false });
     const { route, navigation } = this.props;
 
     if (route.params && route.params.screen === 'Onboarding') {
       navigation.replace(RootStackNavigatorRouts.TabNavigator);
     } else {
-      //navigation.state.params.onGoBack();
       navigation.goBack();
     }
   };

@@ -18,8 +18,8 @@ type Props = {
 const FeedbackPost = ({ getFAQ }: Props) => {
   const navigation = useNavigation();
   const onPress = useCallback(() => {
-    navigation.navigate(RootStackNavigatorRouts.Feedback);
     getFAQ();
+    navigation.navigate(RootStackNavigatorRouts.FAQ);
   }, [navigation]);
 
   return (

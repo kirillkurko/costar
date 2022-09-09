@@ -132,7 +132,7 @@ class DoubleMatchup extends PureComponent<Props, State> {
   onQuestionPress = () => {
     const { navigation, dispatch } = this.props;
     dispatch(getFAQ());
-    navigation.navigate(RootStackNavigatorRouts.Feedback);
+    navigation.navigate(RootStackNavigatorRouts.FAQ);
   };
 
   render() {

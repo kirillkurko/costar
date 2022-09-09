@@ -15,8 +15,8 @@ import Button from 'src/shared/components/Button';
 import { wp } from 'src/helpers';
 import { colors, fonts } from 'src/variables';
 import { img } from 'assets/img';
-import { navigateToSubscriptionScreen } from 'src/shared/analytics/Firebase';
 import { NavigationContext } from '@react-navigation/native';
+import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
 
 type Props = {
   isFetching: boolean,
@@ -32,11 +32,13 @@ type Props = {
 
 export class Card extends PureComponent<Props> {
   static contextType = NavigationContext;
-  onPress = (eventItem: string) => {
+  onPress = () => {
     let navigation = this.context;
     const { refresh } = this.props;
 
-    navigateToSubscriptionScreen(navigation, refresh, eventItem);
+    navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant, {
+      onGoBack: refresh(),
+    });
   };
 
   render() {

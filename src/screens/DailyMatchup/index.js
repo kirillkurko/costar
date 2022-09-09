@@ -158,7 +158,7 @@ class DailyMatchup extends PureComponent<Props, State> {
     const { dispatch } = this.props;
     dispatch(getFAQ());
     let navigation = this.context;
-    navigation.navigate(RootStackNavigatorRouts.Feedback);
+    navigation.navigate(RootStackNavigatorRouts.FAQ);
   };
 
   onSwitch = (value) => {

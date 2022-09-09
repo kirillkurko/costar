@@ -1,14 +1,13 @@
 // @flow
 
-import React, {PureComponent} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-import {colors, fonts} from 'src/variables';
-import {img} from 'assets/img';
-import {resources} from '../../shared';
-import {navigateToSubscriptionScreen} from 'src/shared/analytics/Firebase';
-import {useNavigation} from '@react-navigation/native';
+import { colors, fonts } from 'src/variables';
+import { img } from 'assets/img';
+import { resources } from '../../shared';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
 
 type State = {
   isVisible: boolean,
@@ -24,26 +23,22 @@ class SubscriptionCircleButton extends PureComponent<Props, State> {
     isVisible: true,
   };
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  navigation = useNavigation();
-
   onPress = () => {
-    const {refresh} = this.props;
+    const { refresh } = this.props;
+    const { navigation } = this.context;
 
-    // navigation.navigate('Subscribe3', {
-    //     onGoBack: () => refresh(),
-    // });
-
-    navigateToSubscriptionScreen(this.navigation, refresh, 'diamond_round');
+    navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant, {
+      onGoBack: () => refresh(),
+    });
   };
 
   onCloseCircleButton = () => {
-    this.setState({isVisible: false});
+    this.setState({ isVisible: false });
     AsyncStorage.setItem('purchaseButtonVisibility', JSON.stringify(false));
   };
 
   render() {
-    const {isVisible} = this.state;
+    const { isVisible } = this.state;
     return isVisible ? (
       <TouchableOpacity
         style={styles.subscriptionCircleButton}
@@ -57,7 +52,7 @@ class SubscriptionCircleButton extends PureComponent<Props, State> {
           />
         </TouchableOpacity>
         <Image
-          resizeMode="contain"
+          resizeMode='contain'
           source={img.iconDiamond}
           style={styles.subscriptionCircleImage}
         />
@@ -84,7 +79,7 @@ const styles = StyleSheet.create({
     width: 80,
     shadowColor: colors.shadowGold,
     backgroundColor: colors.gold,
-    shadowOffset: {width: 0, height: 3},
+    shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.6,
     shadowRadius: 10,
   },
