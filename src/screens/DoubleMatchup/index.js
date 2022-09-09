@@ -50,7 +50,7 @@ class DoubleMatchup extends PureComponent<Props, State> {
   };
 
   async componentDidMount() {
-    const { womanBirthDate, manBirthDate } = this.props;
+    const { womanBirthDate, manBirthDate, navigation } = this.props;
     if (womanBirthDate && manBirthDate) {
       const firstDateParts = getDateParts(womanBirthDate);
       const secondDateParts = getDateParts(manBirthDate);
@@ -61,12 +61,11 @@ class DoubleMatchup extends PureComponent<Props, State> {
         isWomanActive: false,
       });
     }
-    let navigation = this.context;
     navigation.addListener('focus', this.onDidFocus);
   }
 
   componentWillUnmount() {
-    let navigation = this.context;
+    const { navigation } = this.props;
     navigation.removeListener('focus', this.onDidFocus);
   }
 

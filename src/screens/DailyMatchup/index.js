@@ -115,15 +115,15 @@ class DailyMatchup extends PureComponent<Props, State> {
   };
 
   async componentDidMount() {
-    const { dispatch } = this.props;
+    const { dispatch, navigation } = this.props;
 
     dispatch(getFeedbackLinks());
-    let navigation = this.context;
+
     navigation.addListener('focus', this.onDidFocus);
   }
 
   componentWillUnmount() {
-    let navigation = this.context;
+    const { navigation } = this.props;
     navigation.removeListener('focus', this.onDidFocus);
   }
 
