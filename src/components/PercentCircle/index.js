@@ -39,8 +39,6 @@ export default class PercentCircle extends PureComponent {
   animate(toVal, dur, ease) {
     const { fill } = this.props;
     const toValue = toVal >= 0 ? toVal : fill;
-    console.log(toVal, ' toVal');
-    console.log(toValue, ' toValue');
     const duration = dur || this.props.duration;
     const easing = ease || this.props.easing;
 
@@ -50,7 +48,7 @@ export default class PercentCircle extends PureComponent {
       toValue,
       easing,
       duration,
-      useNativeDriver: true,
+      useNativeDriver: false,
     });
     anim.start(this.props.onAnimationComplete);
 
