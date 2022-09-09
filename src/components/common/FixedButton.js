@@ -1,6 +1,6 @@
 // @flow
 
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import {
   Animated,
   Easing,
@@ -8,8 +8,8 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import {colors} from 'src/variables';
-import {img} from 'assets/img';
+import { colors } from 'src/variables';
+import { img } from 'assets/img';
 
 type Props = {
   onPress(): void,
@@ -20,7 +20,7 @@ export class FixedButton extends PureComponent<Props> {
   animatedValue = new Animated.Value(0);
 
   componentDidUpdate(prevProps) {
-    const {shouldShowFixedButton} = this.props;
+    const { shouldShowFixedButton } = this.props;
     if (
       prevProps.shouldShowFixedButton !== shouldShowFixedButton &&
       prevProps.shouldShowFixedButton === false
@@ -40,6 +40,7 @@ export class FixedButton extends PureComponent<Props> {
       toValue: 1,
       duration: 100,
       easing: Easing.linear,
+      useNativeDriver: true,
     }).start();
   };
 
@@ -48,13 +49,14 @@ export class FixedButton extends PureComponent<Props> {
       toValue: 0,
       duration: 100,
       easing: Easing.linear,
+      useNativeDriver: true,
     }).start();
   };
 
   render() {
-    const {onPress} = this.props;
+    const { onPress } = this.props;
     const scaleButton = {
-      transform: [{scale: this.animatedValue}],
+      transform: [{ scale: this.animatedValue }],
     };
     return (
       <Animated.View style={[styles.fixedButtonContainer, scaleButton]}>
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
     height: 44,
     width: 44,
     backgroundColor: colors.white,
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 1,

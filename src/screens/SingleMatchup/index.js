@@ -97,12 +97,12 @@ class SingleMatchup extends PureComponent<Props, State> {
     }
     await this.setPermissionAppStore();
 
-    let navigation = this.context;
+    const { navigation } = this.props;
     navigation.addListener('focus', this.onDidFocus);
   }
 
   componentWillUnmount() {
-    let navigation = this.context;
+    const { navigation } = this.props;
     navigation.removeListener('focus', this.onDidFocus);
   }
 
