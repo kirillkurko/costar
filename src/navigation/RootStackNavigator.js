@@ -9,6 +9,7 @@ import Privacy from '../screens/Privacy';
 import SubscribeFirstVariant from '../screens/Subscribe/SubscribeFirstVariant';
 import Terms from '../screens/Terms';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import purchasesInteractions from 'src/shared/purchases/interactions';
 
 const RootStack = createStackNavigator();
 
@@ -22,6 +23,8 @@ function Sample() {
 
 const RootStackNavigator = () => {
   const [isOnboardingComplete, setIsOnboardingComplete] = useState(null);
+
+  purchasesInteractions.setup();
 
   const checkIfOnboardingComplete = async () => {
     const isComplete = await AsyncStorage.getItem('isSeenOnboarding');

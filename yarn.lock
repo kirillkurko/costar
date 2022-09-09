@@ -5887,10 +5887,10 @@ react-native-localize@^2.2.3:
   resolved "https://registry.yarnpkg.com/react-native-localize/-/react-native-localize-2.2.3.tgz#9666becaea5d6b8d968f037d82b2220ba52c463b"
   integrity sha512-DoEEk7s4p0BnCU2zS2yzC+bEUWSFhcuXoLidgHag1EQkaXJLiNos661h8nGZvWWrVK6zE+Cl2319bqG3FidkJQ==
 
-react-native-purchases@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-purchases/-/react-native-purchases-5.0.0.tgz#18cdfe6a45c9b3501ab85290e80726a22b4a8481"
-  integrity sha512-rQMS5t3sybCLKElghM/H60PABZfU8afp5IXdPGEFseY+rqnYJQKxQFq1w+DFpTN6kmwK92J6V5elrnVF1m0Ugg==
+react-native-purchases@3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/react-native-purchases/-/react-native-purchases-3.4.3.tgz#f263fddb47d00a53fd6e317781d086634dcdbd09"
+  integrity sha512-wbK1CcMDX2iW66LMBh5yE7gMViAxCswTH+clWQXg5rm5zZBCAOX0pf+NE7nB0XMIgIyeeO5U0j1Gjtotkkv4MQ==
 
 react-native-safe-area-context@^4.3.1:
   version "4.3.3"

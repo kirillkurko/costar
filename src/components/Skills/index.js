@@ -1,12 +1,12 @@
 // @flow
 
-import React, {PureComponent} from 'react';
-import {Text, View} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Text, View } from 'react-native';
 
-import {resources} from '../../shared';
-import {Card} from '../common';
+import { resources } from '../../shared';
+import { Card } from '../common';
 import FeedbackPost from '../Psychomatrix/FeedbackPost';
-import {img} from '../../../assets/img';
+import { img } from '../../../assets/img';
 import styles from './styles';
 
 type DataType = {
@@ -32,10 +32,10 @@ class Skills extends PureComponent<Props> {
   };
 
   renderItem = (title, icon, description, professions) => {
-    const {isActivePurchase, refresh, isFetching} = this.props;
+    const { isActivePurchase, refresh, isFetching } = this.props;
     return (
       <Card
-        eventSource="personality_skills"
+        eventSource='personality_skills'
         title={title}
         titleIcon={icon}
         description={description}
@@ -48,7 +48,7 @@ class Skills extends PureComponent<Props> {
   };
 
   render() {
-    const {data} = this.props;
+    const { data } = this.props;
     return data ? (
       <View style={styles.container}>
         <Text style={styles.title}>{resources.t('SKILLS.SKILLS_TITLE')}</Text>

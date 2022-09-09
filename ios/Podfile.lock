@@ -77,8 +77,11 @@ PODS:
   - glog (0.3.5)
   - libevent (2.1.12)
   - OpenSSL-Universal (1.1.1100)
-  - PurchasesHybridCommon (4.1.4):
-    - RevenueCat (= 4.10.2)
+  - Purchases (3.7.5):
+    - PurchasesCoreSwift (= 3.7.5)
+  - PurchasesCoreSwift (3.7.5)
+  - PurchasesHybridCommon (1.4.5):
+    - Purchases (= 3.7.5)
   - RCT-Folly (2021.06.28.00-v2):
     - boost
     - DoubleConversion
@@ -364,7 +367,6 @@ PODS:
     - React-jsi (= 0.69.4)
     - React-logger (= 0.69.4)
     - React-perflogger (= 0.69.4)
-  - RevenueCat (4.10.2)
   - RNCAsyncStorage (1.17.10):
     - React-Core
   - RNDateTimePicker (6.3.2):
@@ -375,9 +377,9 @@ PODS:
     - React-Core
   - RNLocalize (2.2.3):
     - React-Core
-  - RNPurchases (5.0.0):
-    - PurchasesHybridCommon (= 4.1.4)
-    - React-Core
+  - RNPurchases (3.4.3):
+    - PurchasesHybridCommon (= 1.4.5)
+    - React
   - RNScreens (3.17.0):
     - React-Core
     - React-RCTImage
@@ -476,8 +478,9 @@ SPEC REPOS:
     - fmt
     - libevent
     - OpenSSL-Universal
+    - Purchases
+    - PurchasesCoreSwift
     - PurchasesHybridCommon
-    - RevenueCat
     - SocketRocket
     - YogaKit
 
@@ -593,7 +596,9 @@ SPEC CHECKSUMS:
   glog: 3d02b25ca00c2d456734d0bcff864cbc62f6ae1a
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
-  PurchasesHybridCommon: f0a833fab15d3665acb509c0e84109c69aa8896e
+  Purchases: 7ebce9418bc16732c3c3bb4b6ff7e7e397de024e
+  PurchasesCoreSwift: 50636e307c1ab76c7a7894a87d042665f2fe0be9
+  PurchasesHybridCommon: b1dd1c5125ccf99b9e62b5974d0e5145895e8b87
   RCT-Folly: b9d9fe1fc70114b751c076104e52f3b1b5e5a95a
   RCTRequired: bd9d2ab0fda10171fcbcf9ba61a7df4dc15a28f4
   RCTTypeSafety: e44e139bf6ec8042db396201834fc2372f6a21cd
@@ -623,13 +628,12 @@ SPEC CHECKSUMS:
   React-RCTVibration: 9adb4a3cbb598d1bbd46a05256f445e4b8c70603
   React-runtimeexecutor: 61ee22a8cdf8b6bb2a7fb7b4ba2cc763e5285196
   ReactCommon: 8f67bd7e0a6afade0f20718f859dc8c2275f2e83
-  RevenueCat: 8c2f703179a96f35d113e5b2185a11154dc9e5ad
   RNCAsyncStorage: 0c357f3156fcb16c8589ede67cc036330b6698ca
   RNDateTimePicker: 4f1fc917f5af9d9ae4c5fc0c63a4474d61338693
   RNGestureHandler: 920eb17f5b1e15dae6e5ed1904045f8f90e0b11e
   RNIap: b127a719a3b67deafc522943f5a714ee6e6b7403
   RNLocalize: a64514b46a01375fdfae9349036b4dc7130333b5
-  RNPurchases: 4f7e098cdcd65ee03eb77491eba2bf3533767c65
+  RNPurchases: 2d9a3f50c5b4924fc2b79e3c548d7ccb4217f355
   RNScreens: 0df01424e9e0ed7827200d6ed1087ddd06c493f9
   RNStoreReview: e05edbbf426563070524cec384ac0b8df69be801
   RNSVG: 42a0c731b11179ebbd27a3eeeafa7201ebb476ff
