@@ -6,11 +6,14 @@ import store from 'src/store';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import RootStackNavigator from './src/navigation/RootStackNavigator';
+import purchasesInteractions from './src/shared/purchases/interactions';
 
 const persistor = persistStore(store);
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
+
+  purchasesInteractions.setup();
 
   return (
     <Provider store={store}>

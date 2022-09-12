@@ -145,7 +145,6 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
     try {
       const { selectedSubscription } = this.state;
       const { availablePurchases } = this.props;
-      const { navigation } = this.props;
       this.setState({ isFetching: true });
 
       const purchase = availablePurchases.find(
@@ -160,7 +159,6 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
         this.closeScreen('automatically');
       }, 600);
     } catch (error) {
-      const { navigation } = this.props;
       this.setState({ isFetching: false });
 
       if (!error.userCancelled) {
@@ -175,6 +173,7 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
 
   render() {
     const { selectedSubscription, isFetching } = this.state;
+    console.log(this.state);
     const {
       selectedAnswer,
       annualPurchasePrice,
@@ -378,21 +377,21 @@ const mapStateToProps = (state) => ({
   availablePurchases: state.availablePurchases,
   annualPurchasePrice:
     /*(state.availablePurchases &&
-state.availablePurchases.find(
-(purchase) => purchase.packageType === 'ANNUAL',
-).product.price_string) ||*/
+    state.availablePurchases.find(
+      (purchase) => purchase.packageType === 'ANNUAL',
+    ).product.price_string) ||*/
     '$39.99',
   monthPurchasePrice:
     /*(state.availablePurchases &&
-state.availablePurchases.find(
-(purchase) => purchase.packageType === 'MONTHLY',
-).product.price_string) ||*/
+    state.availablePurchases.find(
+      (purchase) => purchase.packageType === 'MONTHLY',
+    ).product.price_string) ||*/
     '$14.99',
   annualPrice:
     /*(state.availablePurchases &&
-state.availablePurchases.find(
-(purchase) => purchase.packageType === 'ANNUAL',
-).product.price) ||*/
+    state.availablePurchases.find(
+      (purchase) => purchase.packageType === 'ANNUAL',
+    ).product.price) ||*/
     14.99,
 });
 
