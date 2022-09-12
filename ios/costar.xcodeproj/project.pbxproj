@@ -27,6 +27,7 @@
 		A13AA71A23184CCE884D032C /* SFUIDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 612945EE9F2B471DABB7ED3C /* SFUIDisplay-Semibold.ttf */; };
 		BD2CF77FD4354B8CBF6128C8 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4247A16F3134A9290D50DBE /* Montserrat-ExtraLight.ttf */; };
 		CD644E15AD0F44D1BB8D63C0 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE112E5427DA4680B885B12F /* SFProDisplay-Medium.ttf */; };
+		D1A1E58728CF7A83003CE282 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A1E58628CF7A83003CE282 /* StoreKit.framework */; };
 		EE1705B9A250471FB7B82EAB /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A7F68404D6474B05A56988E9 /* Montserrat-Bold.ttf */; };
 		FAF4A088127641CEB961797C /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F2305C1F5944AF09FE087D2 /* SFProDisplay-Regular.ttf */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,7 @@
 		BE112E5427DA4680B885B12F /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProDisplay-Medium.ttf"; path = "../assets/fonts/SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
 		BF1B610642BF4473A775BECA /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Medium.ttf"; path = "../assets/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		C28E4D04A0954C109D060F38 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBold.ttf"; path = "../assets/fonts/Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		D1A1E58628CF7A83003CE282 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D8BBB95D1B62432492E318E8 /* SFUIDisplay-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFUIDisplay-Light.ttf"; path = "../assets/fonts/SFUIDisplay-Light.ttf"; sourceTree = "<group>"; };
 		E4247A16F3134A9290D50DBE /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraLight.ttf"; path = "../assets/fonts/Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -90,6 +92,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C80B921A6F3F58F76C31292 /* libPods-costar.a in Frameworks */,
+				D1A1E58728CF7A83003CE282 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +132,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1A1E58628CF7A83003CE282 /* StoreKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-costar.a */,
 				19F6CBCC0A4E27FBF8BF4A61 /* libPods-costar-costarTests.a */,
