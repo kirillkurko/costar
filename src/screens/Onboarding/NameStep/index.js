@@ -5,7 +5,6 @@ import {
   Animated,
   ImageBackground,
   KeyboardAvoidingView,
-  Platform,
   Text,
   TextInput,
   View,
@@ -211,8 +210,8 @@ const NameStep = (props) => {
               </View>
             </View>
             <KeyboardAvoidingView
-              style={{ position: 'absolute', bottom: 0, left: '5%' }}
-              behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+              keyboardVerticalOffset={100}
+              behavior={'position'}>
               <LinearGradient
                 colors={colors.violetGradient}
                 style={styles.inputWrapper}
