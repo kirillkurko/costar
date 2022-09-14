@@ -375,22 +375,22 @@ const mapStateToProps = (state) => ({
   selectedAnswer: state.selectedAnswer,
   availablePurchases: state.availablePurchases,
   annualPurchasePrice:
-    /*(state.availablePurchases &&
-    state.availablePurchases.find(
-      (purchase) => purchase.packageType === 'ANNUAL',
-    ).product.price_string) ||*/
+    (state.availablePurchases &&
+      state.availablePurchases.find(
+        (purchase) => purchase.packageType === 'ANNUAL',
+      ).product.price_string) ||
     '$39.99',
   monthPurchasePrice:
-    /*(state.availablePurchases &&
-    state.availablePurchases.find(
-      (purchase) => purchase.packageType === 'MONTHLY',
-    ).product.price_string) ||*/
+    (state.availablePurchases &&
+      state.availablePurchases.find(
+        (purchase) => purchase.packageType === 'MONTHLY',
+      ).product.price_string) ||
     '$14.99',
   annualPrice:
-    /*(state.availablePurchases &&
-    state.availablePurchases.find(
-      (purchase) => purchase.packageType === 'ANNUAL',
-    ).product.price) ||*/
+    (state.availablePurchases &&
+      state.availablePurchases.find(
+        (purchase) => purchase.packageType === 'ANNUAL',
+      ).product.price) ||
     14.99,
 });
 

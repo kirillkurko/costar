@@ -1,14 +1,13 @@
 // @flow
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Animated,
-  Dimensions,
   ImageBackground,
-  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
   Text,
   TextInput,
-  UIManager,
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -52,53 +51,8 @@ const NameStep = (props) => {
     placeholder: resources.t('ONBOARDING.PLACEHOLDER'),
   });
 
-  useEffect(() => {
-    const keyboardDidShowSub = Keyboard.addListener(
-      'keyboardDidShow',
-      handleKeyboardDidShow,
-    );
-    const keyboardDidHideSub = Keyboard.addListener(
-      'keyboardDidHide',
-      handleKeyboardDidHide,
-    );
-    return () => {
-      keyboardDidShowSub.remove();
-      keyboardDidHideSub.remove();
-    };
-  }, []);
-
   const onChangeText = (value) => {
     setState({ ...state, value });
-  };
-
-  const handleKeyboardDidShow = (event) => {
-    const { shift } = state;
-    const { height: windowHeight } = Dimensions.get('window');
-    const keyboardHeight = event.endCoordinates.height;
-    const currentlyFocusedInput = TextInputState.currentlyFocusedInput();
-    UIManager.measure(
-      currentlyFocusedInput,
-      (originX, originY, width, height, pageX, pageY) => {
-        const gap = windowHeight - keyboardHeight - (pageY + height);
-        if (gap >= 0) {
-          return;
-        }
-        Animated.timing(shift, {
-          toValue: gap - 100,
-          duration: 500,
-          useNativeDriver: true,
-        }).start();
-      },
-    );
-  };
-
-  const handleKeyboardDidHide = () => {
-    const { shift } = state;
-    Animated.timing(shift, {
-      toValue: 0,
-      duration: 500,
-      useNativeDriver: true,
-    }).start();
   };
 
   const setIsAnimate = () => {
@@ -123,7 +77,7 @@ const NameStep = (props) => {
     navigation.navigate(OnboardingStackNavigatorRouts.BirthdayStep);
   };
 
-  const { value, shift, isAnimate, placeholder } = state;
+  const { value, isAnimate, placeholder } = state;
   return (
     <SafeAreaInsetsContext.Consumer>
       {(insets) => (
@@ -137,8 +91,7 @@ const NameStep = (props) => {
             },
           ]}>
           <OnboardingHeader number={1} />
-          <Animated.View
-            style={[styles.wrapper, { transform: [{ translateY: shift }] }]}>
+          <View style={styles.wrapper}>
             <View>
               <Text style={styles.titleText}>
                 {resources.t('ONBOARDING.NAME.TITLE')}
@@ -257,7 +210,9 @@ const NameStep = (props) => {
                 />
               </View>
             </View>
-            <View>
+            <KeyboardAvoidingView
+              style={{ position: 'absolute', bottom: 0, left: '5%' }}
+              behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
               <LinearGradient
                 colors={colors.violetGradient}
                 style={styles.inputWrapper}
@@ -281,8 +236,8 @@ const NameStep = (props) => {
                 buttonText={resources.t('ONBOARDING.BUTTONS.NEXT')}
                 withArrowIcon
               />
-            </View>
-          </Animated.View>
+            </KeyboardAvoidingView>
+          </View>
         </ImageBackground>
       )}
     </SafeAreaInsetsContext.Consumer>
