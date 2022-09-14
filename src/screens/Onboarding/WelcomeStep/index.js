@@ -35,7 +35,6 @@ const WelcomeStep = ({ setAvailablePurchases }: Props) => {
   }, []);
 
   const setPurchases = useCallback(async () => {
-    console.log(await purchasesInteractions.getOfferings());
     const { current } = await purchasesInteractions.getOfferings();
 
     if (current && current.availablePackages) {

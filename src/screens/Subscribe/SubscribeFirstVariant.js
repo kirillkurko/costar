@@ -173,7 +173,6 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
 
   render() {
     const { selectedSubscription, isFetching } = this.state;
-    console.log(this.state);
     const {
       selectedAnswer,
       annualPurchasePrice,
