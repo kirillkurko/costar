@@ -1,6 +1,9 @@
 PODS:
   - amplitude-react-native (0.4.0):
     - React-Core
+  - AppsFlyerFramework (6.8.1):
+    - AppsFlyerFramework/Main (= 6.8.1)
+  - AppsFlyerFramework/Main (6.8.1)
   - boost (1.76.0)
   - BVLinearGradient (2.6.2):
     - React-Core
@@ -293,6 +296,9 @@ PODS:
   - React-jsinspector (0.69.4)
   - React-logger (0.69.4):
     - glog
+  - react-native-appsflyer (6.8.2):
+    - AppsFlyerFramework (= 6.8.1)
+    - React
   - react-native-date-picker (4.2.5):
     - React-Core
   - react-native-safe-area-context (4.3.3):
@@ -440,6 +446,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - react-native-appsflyer (from `../node_modules/react-native-appsflyer`)
   - react-native-date-picker (from `../node_modules/react-native-date-picker`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-webview (from `../node_modules/react-native-webview`)
@@ -468,6 +475,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - AppsFlyerFramework
     - CocoaAsyncSocket
     - Flipper
     - Flipper-Boost-iOSX
@@ -530,6 +538,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-appsflyer:
+    :path: "../node_modules/react-native-appsflyer"
   react-native-date-picker:
     :path: "../node_modules/react-native-date-picker"
   react-native-safe-area-context:
@@ -583,6 +593,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   amplitude-react-native: 9ab091c0e6632de6ac82175ac232665a64ba8f3a
+  AppsFlyerFramework: a664325124485223296354b4eec335f5340a6df8
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   BVLinearGradient: 34a999fda29036898a09c6a6b728b0b4189e1a44
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
@@ -619,6 +630,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: a27badbbdbc0ff781813370736a2d1c7261181d4
   React-jsinspector: 8a3d3f5dcd23a91e8c80b1bf0e96902cd1dca999
   React-logger: 1088859f145b8f6dd0d3ed051a647ef0e3e80fad
+  react-native-appsflyer: fcaea893e8ba43d348d168a7796c7cc692b057b2
   react-native-date-picker: 55193347d8d0f40948f441ffd4e5db6f0a8fbe13
   react-native-safe-area-context: b456e1c40ec86f5593d58b275bd0e9603169daca
   react-native-webview: d33e2db8925d090871ffeb232dfa50cb3a727581
