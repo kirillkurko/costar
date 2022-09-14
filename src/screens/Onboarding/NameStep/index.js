@@ -75,9 +75,9 @@ const NameStep = (props) => {
     const { shift } = state;
     const { height: windowHeight } = Dimensions.get('window');
     const keyboardHeight = event.endCoordinates.height;
-    const currentlyFocusedField = TextInputState.currentlyFocusedField();
+    const currentlyFocusedInput = TextInputState.currentlyFocusedInput();
     UIManager.measure(
-      currentlyFocusedField,
+      currentlyFocusedInput,
       (originX, originY, width, height, pageX, pageY) => {
         const gap = windowHeight - keyboardHeight - (pageY + height);
         if (gap >= 0) {
