@@ -60,32 +60,8 @@ const options = [
   },
 ];
 
-const CustomScrollView = wrapScrollView(ScrollView);
-
-class DailyMatchup extends PureComponent<Props, State> {
-  state = {
-    userBirthDateParts: [],
-    isActivePurchase: false,
-    shouldShowFixedButton: false,
-    section: 'today',
-    purchaseButtonVisible: false,
-    buttonBottom: 20,
-    scrollY: 0,
-  };
-
-  scrollView: ScrollView;
-
-  matrixRef = React.createRef<any>();
-  static contextType = NavigationContext;
-
-  scrollIntoViewOptions = {
-    align: 'top',
-    insets: {
-      top: 0,
-    },
-  };
-
-  onDidFocus = async () => {
+const FocusComponent = () => {
+  const onDidFocus = async (test) => {
     const { dispatch } = this.props;
 
     let userBirthDate = await AsyncStorage.getItem('userBirthDateDaily');
@@ -112,6 +88,34 @@ class DailyMatchup extends PureComponent<Props, State> {
       dispatch(getPrognosisTomorrow(date));
       dispatch(getPrognosisYesterday(date));
     }
+    console.log(test);
+  };
+  return <></>;
+};
+
+const CustomScrollView = wrapScrollView(ScrollView);
+
+class DailyMatchup extends PureComponent<Props, State> {
+  state = {
+    userBirthDateParts: [],
+    isActivePurchase: false,
+    shouldShowFixedButton: false,
+    section: 'today',
+    purchaseButtonVisible: false,
+    buttonBottom: 20,
+    scrollY: 0,
+  };
+
+  scrollView: ScrollView;
+
+  matrixRef = React.createRef<any>();
+  static contextType = NavigationContext;
+
+  scrollIntoViewOptions = {
+    align: 'top',
+    insets: {
+      top: 0,
+    },
   };
 
   async componentDidMount() {
@@ -119,12 +123,12 @@ class DailyMatchup extends PureComponent<Props, State> {
 
     dispatch(getFeedbackLinks());
 
-    navigation.addListener('focus', this.onDidFocus);
+    navigation.addListener('focus', () => this.onDidFocus('addListener'));
   }
 
   componentWillUnmount() {
     const { navigation } = this.props;
-    navigation.removeListener('focus', this.onDidFocus);
+    navigation.removeListener('focus', () => this.onDidFocus('removeListener'));
   }
 
   onDateChange = async (userBirthDate) => {
