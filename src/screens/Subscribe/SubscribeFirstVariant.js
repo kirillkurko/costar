@@ -21,7 +21,6 @@ import purchasesInteractions from 'src/shared/purchases/interactions';
 import { getMonthPrice } from 'src/helpers';
 import { resources } from 'src/shared/i18n/configuration';
 import { colors } from 'src/variables';
-import { MATCHUP_SUBSCRIPTIONS_PRICE_USD } from 'src/shared/iap/constants';
 import reviewConfiguration from './reviewConfiguration';
 import { Styles2 as styles } from './styles';
 import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
@@ -100,22 +99,8 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
     }).start();
   };
 
-  getPurchasePriceUSD = (subscription: string) => {
-    switch (subscription) {
-      case 'annual':
-        return MATCHUP_SUBSCRIPTIONS_PRICE_USD.YEAR;
-
-      case 'monthly':
-        return MATCHUP_SUBSCRIPTIONS_PRICE_USD.MONTH;
-
-      default:
-        return 0;
-    }
-  };
-
   handleCardPress = (selectedSubscription: string) => {
     this.setState({ selectedSubscription });
-    //this.purchasePackage();
   };
 
   closeScreen = async (closeType: string) => {
@@ -151,6 +136,7 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
         (availablePurchase) =>
           availablePurchase.packageType.toLowerCase() === selectedSubscription,
       );
+
       await purchasesInteractions.purchasePackage(purchase);
 
       this.setState({ isFetching: false });
@@ -289,7 +275,7 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
                     <View style={styles.topTextContainer}>
                       <Text style={styles.cardTopText}>
                         {resources
-                          .t('SUBSCRIPTION.THREE_DAY_TRIAL')
+                          .t('SUBSCRIPTION.BILLED_MONTHLY')
                           .toUpperCase()}
                       </Text>
                     </View>
