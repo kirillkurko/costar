@@ -7,7 +7,7 @@ import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import RootStackNavigator from './src/navigation/RootStackNavigator';
 import purchasesInteractions from './src/shared/purchases/interactions';
-import { AMPLITUDE_API_KEY } from './src/utils/constants/const';
+import { AMPLITUDE_API_KEY } from './src/shared/analytics';
 import { init } from '@amplitude/analytics-react-native';
 import appsFlyer from 'react-native-appsflyer';
 
