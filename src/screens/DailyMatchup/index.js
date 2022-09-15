@@ -60,8 +60,32 @@ const options = [
   },
 ];
 
-const FocusComponent = () => {
-  const onDidFocus = async (test) => {
+const CustomScrollView = wrapScrollView(ScrollView);
+
+class DailyMatchup extends PureComponent<Props, State> {
+  state = {
+    userBirthDateParts: [],
+    isActivePurchase: false,
+    shouldShowFixedButton: false,
+    section: 'today',
+    purchaseButtonVisible: false,
+    buttonBottom: 20,
+    scrollY: 0,
+  };
+
+  scrollView: ScrollView;
+
+  matrixRef = React.createRef<any>();
+  static contextType = NavigationContext;
+
+  scrollIntoViewOptions = {
+    align: 'top',
+    insets: {
+      top: 0,
+    },
+  };
+
+  onDidFocus = async () => {
     const { dispatch } = this.props;
 
     let userBirthDate = await AsyncStorage.getItem('userBirthDateDaily');
@@ -88,34 +112,6 @@ const FocusComponent = () => {
       dispatch(getPrognosisTomorrow(date));
       dispatch(getPrognosisYesterday(date));
     }
-    console.log(test);
-  };
-  return <></>;
-};
-
-const CustomScrollView = wrapScrollView(ScrollView);
-
-class DailyMatchup extends PureComponent<Props, State> {
-  state = {
-    userBirthDateParts: [],
-    isActivePurchase: false,
-    shouldShowFixedButton: false,
-    section: 'today',
-    purchaseButtonVisible: false,
-    buttonBottom: 20,
-    scrollY: 0,
-  };
-
-  scrollView: ScrollView;
-
-  matrixRef = React.createRef<any>();
-  static contextType = NavigationContext;
-
-  scrollIntoViewOptions = {
-    align: 'top',
-    insets: {
-      top: 0,
-    },
   };
 
   async componentDidMount() {
