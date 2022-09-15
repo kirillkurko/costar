@@ -8,7 +8,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const initConnection = async () => {
   try {
     const result = await RNIap.initConnection();
-    console.log(result);
     return result;
   } catch (error) {
     console.log(error);
