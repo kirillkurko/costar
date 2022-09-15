@@ -115,7 +115,7 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
 
   handleCardPress = (selectedSubscription: string) => {
     this.setState({ selectedSubscription });
-    this.purchasePackage();
+    //this.purchasePackage();
   };
 
   closeScreen = async (closeType: string) => {
