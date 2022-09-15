@@ -9,14 +9,29 @@ import { Image, StyleSheet, Text } from 'react-native';
 import { img } from '../../assets/img';
 import { resources } from '../shared';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useAnalytics } from '../shared/analytics';
+import { Events } from '../shared/analytics/events';
 
 const Tab = createBottomTabNavigator();
 
+const TabEvent = {
+  personality: Events.TabBar.PersonalityClick,
+  daily: Events.TabBar.DailyNumerologyClick,
+  compatibility: Events.TabBar.CompatibilityClick,
+};
+
 const BottomTabNavigator = () => {
   const insets = useSafeAreaInsets();
+  const track = useAnalytics();
+
+  const stateEventListener = ({ data: { state } }) =>
+    track(TabEvent[state.routeNames[state.index]]);
 
   return (
     <Tab.Navigator
+      screenListeners={{
+        state: stateEventListener,
+      }}
       initialRouteName={BottomTabNavigatorRouts.Daily}
       screenOptions={{
         headerShown: false,

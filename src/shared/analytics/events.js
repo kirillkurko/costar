@@ -1,6 +1,6 @@
-const Events = {
+export const Events = {
   TabBar: {
-    PersonalityClick: 'TabBar_personality_click',
+    PersonalityClick: 'TabBar_Personality_click',
     DailyNumerologyClick: 'TabBar_DailyNumerology_click',
     CompatibilityClick: 'TabBar_Compatibility_click',
   },
