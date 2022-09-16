@@ -59,15 +59,14 @@ const QuestionsStep = ({ route, navigation, dispatch }: Props) => {
   }, [selected]);
 
   useEffect(() => {
-    track(
-      StepEvent[number][0],
-      questionsConfiguration[number].answers[0].value,
-    );
+    track(StepEvent[number][0], {
+      value: questionsConfiguration[number].answers[0].value,
+    });
   }, [number]);
 
   const handleOptionClick = (selectedNumber, value) => {
     setSelected(selectedNumber);
-    track(StepEvent[number][0], value);
+    track(StepEvent[number][0], { value });
   };
 
   return (
