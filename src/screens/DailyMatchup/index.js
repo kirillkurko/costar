@@ -127,12 +127,12 @@ class DailyMatchup extends PureComponent<Props, State> {
 
     dispatch(getFeedbackLinks());
 
-    navigation.addListener('focus', this.onDidFocus);
+    navigation.addListener('focus', () => this.onDidFocus('addListener'));
   }
 
   componentWillUnmount() {
     const { navigation } = this.props;
-    navigation.removeListener('focus', this.onDidFocus);
+    navigation.removeListener('focus', () => this.onDidFocus('removeListener'));
   }
 
   onDateChange = async (userBirthDate) => {
