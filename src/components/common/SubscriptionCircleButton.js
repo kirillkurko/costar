@@ -28,7 +28,7 @@ class SubscriptionCircleButton extends PureComponent<Props, State> {
   onPress = () => {
     const { navigation } = this.context;
 
-    trackEvent(Events.TryFree, { tab: 'Compatibility' });
+    trackEvent(Events.TryFree.ButtonClick, { tab: 'Compatibility' });
 
     navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant);
   };
