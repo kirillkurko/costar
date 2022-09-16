@@ -103,6 +103,7 @@ class SingleMatchup extends PureComponent<Props, State> {
       dispatch(setAvailablePurchases(current.availablePackages));
     }
     await this.setPermissionAppStore();
+    await this.getPurchaseStatus();
 
     const { navigation } = this.props;
     navigation.addListener('focus', this.onDidFocus);
@@ -119,8 +120,6 @@ class SingleMatchup extends PureComponent<Props, State> {
         purchaseButtonVisible: JSON.parse(value) !== false,
       });
     });
-
-    await this.getPurchaseStatus();
   };
 
   setPermissionAppStore = () => {
