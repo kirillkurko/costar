@@ -39,6 +39,9 @@ const TitleEvent = {
   Love: Events.DailyNumerology.LoveUnlockButtonClick,
   Health: Events.DailyNumerology.HealthUnlockButtonClick,
   'Self development': Events.DailyNumerology.SelfUnlockButtonClick,
+  Strength: Events.Personality.StrengthUnlockButtonClick,
+  Weakness: Events.Personality.WeaknessUnlockButtonClick,
+  Important: Events.Personality.ImportantUnlockButtonClick,
 };
 
 export class Card extends PureComponent<Props> {
@@ -50,6 +53,8 @@ export class Card extends PureComponent<Props> {
     navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant, {
       onGoBack: refresh(),
     });
+
+    console.log(title);
 
     if (source === 'button') {
       trackEvent(TitleEvent[title]);

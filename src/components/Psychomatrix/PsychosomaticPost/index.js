@@ -16,6 +16,8 @@ import { colors } from 'src/variables';
 import styles from './styles';
 import { NavigationContext } from '@react-navigation/native';
 import { RootStackNavigatorRouts } from '../../../variables/navigationRouts';
+import { trackEvent } from '../../../shared/analytics';
+import { Events } from '../../../shared/analytics/events';
 
 type Props = {
   title: string,
@@ -27,10 +29,27 @@ type Props = {
   isFetching: boolean,
 };
 
+const TitleEvent = {
+  'Health, Beauty': Events.Personality.HealthUnlockButtonClick,
+  Luck: Events.Personality.LuckUnlockButtonClick,
+  'Vital Energy': Events.Personality.VitalUnlockButtonClick,
+  'Logic, Intuition': Events.Personality.LogicUnlockButtonClick,
+  Duty: Events.Personality.DutyUnlockButtonClick,
+  'Cognitive, Creative': Events.Personality.CognitiveUnlockButtonClick,
+  'Labor, Skill': Events.Personality.LaborUnlockButtonClick,
+  'Intellect, Memory': Events.Personality.IntellectUnlockButtonClick,
+};
+
 class PsychomatrixPost extends PureComponent<Props> {
   static contextType = NavigationContext;
   onPress = (eventItem: string) => {
     let navigation = this.context;
+    const { title } = this.props;
+
+    if (eventItem === 'button') {
+      trackEvent(TitleEvent[title]);
+    }
+
     navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant);
   };
 

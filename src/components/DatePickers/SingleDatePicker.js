@@ -13,6 +13,8 @@ import DatePicker from 'src/shared/components/DatePicker';
 import { createDate, getFormattedDate } from 'src/helpers/dateParsers';
 import { colors, fonts } from 'src/variables';
 import { img } from 'assets/img';
+import { useAnalytics } from '../../shared/analytics';
+import { Events } from '../../shared/analytics/events';
 
 type Props = {
   userBirthDateParts: Array<string>,
@@ -20,6 +22,7 @@ type Props = {
 };
 
 const SingleDatePicker = ({ userBirthDateParts, onDateChange }: Props) => {
+  const track = useAnalytics();
   const [shouldShowModal, setShouldShowModal] = useState(false);
 
   const onConfirmPressed = useCallback((date: Date) => {
@@ -28,7 +31,10 @@ const SingleDatePicker = ({ userBirthDateParts, onDateChange }: Props) => {
     onDateChange(formattedDate);
   }, []);
 
-  const showModal = useCallback(() => setShouldShowModal(true), []);
+  const showModal = useCallback(() => {
+    track(Events.Personality.DataButtonClick);
+    setShouldShowModal(true);
+  }, []);
   const hideModal = useCallback(() => setShouldShowModal(false), []);
 
   return (
