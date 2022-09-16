@@ -17,6 +17,8 @@ import { colors, fonts } from 'src/variables';
 import { img } from 'assets/img';
 import { NavigationContext } from '@react-navigation/native';
 import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
+import { Events } from '../../shared/analytics/events';
+import { trackEvent } from '../../shared/analytics';
 
 type Props = {
   isFetching: boolean,
@@ -30,15 +32,33 @@ type Props = {
   eventSource: string,
 };
 
+const TitleEvent = {
+  'Love compatibility': Events.Compatibility.LoveUnlockButtonClick,
+  'Job / Business': Events.DailyNumerology.JobUnlockButtonClick,
+  Prosperity: Events.DailyNumerology.ProsperityUnlockButtonClick,
+  Love: Events.DailyNumerology.LoveUnlockButtonClick,
+  Health: Events.DailyNumerology.HealthUnlockButtonClick,
+  'Self development': Events.DailyNumerology.SelfUnlockButtonClick,
+  Strength: Events.Personality.StrengthUnlockButtonClick,
+  Weakness: Events.Personality.WeaknessUnlockButtonClick,
+  Important: Events.Personality.ImportantUnlockButtonClick,
+};
+
 export class Card extends PureComponent<Props> {
   static contextType = NavigationContext;
-  onPress = () => {
+  onPress = (source) => {
     let navigation = this.context;
-    const { refresh } = this.props;
+    const { refresh, title } = this.props;
 
     navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant, {
       onGoBack: refresh(),
     });
+
+    console.log(title);
+
+    if (source === 'button') {
+      trackEvent(TitleEvent[title]);
+    }
   };
 
   render() {

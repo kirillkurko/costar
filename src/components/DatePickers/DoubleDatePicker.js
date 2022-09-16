@@ -16,6 +16,8 @@ import DatePicker from 'src/shared/components/DatePicker';
 import { createDate, getFormattedDate } from 'src/helpers/dateParsers';
 import { colors, fonts } from 'src/variables';
 import { img } from 'assets/img';
+import { useAnalytics } from '../../shared/analytics';
+import { Events } from '../../shared/analytics/events';
 
 type Props = {
   firstDateParts: Array<string>,
@@ -34,12 +36,19 @@ const DoubleDatePicker = ({
   isWomanRipple,
   isManRipple,
 }: Props) => {
+  const track = useAnalytics();
+
   const [shouldShowModal, setShouldShowModal] = useState(false);
   const [dateNumber, setDateNumber] = useState(1);
 
   const showModal = useCallback((number: number) => {
     setShouldShowModal(true);
     setDateNumber(number);
+    track(
+      number === 1
+        ? Events.Compatibility.WomanClick
+        : Events.Compatibility.ManClick,
+    );
   }, []);
 
   const hideModal = useCallback(() => setShouldShowModal(false), []);

@@ -16,6 +16,8 @@ import styles from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { OnboardingStackNavigatorRouts } from '../../../variables/navigationRouts';
 import { useNavigation } from '@react-navigation/native';
+import { useAnalytics } from '../../../shared/analytics';
+import { Events } from '../../../shared/analytics/events';
 
 type Props = {
   setAvailablePurchases(Array<PurchasesPackageType>): void,
@@ -24,6 +26,7 @@ type Props = {
 const WelcomeStep = ({ setAvailablePurchases }: Props) => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
+  const track = useAnalytics();
 
   useEffect(() => {
     setPurchaseStatus();
@@ -44,6 +47,7 @@ const WelcomeStep = ({ setAvailablePurchases }: Props) => {
 
   const onStartPress = useCallback(() => {
     navigation.navigate(OnboardingStackNavigatorRouts.NameStep);
+    track(Events.Onboarding.StartButtonClick);
   }, []);
 
   return (

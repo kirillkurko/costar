@@ -10,6 +10,8 @@ import CircularProgress from 'src/components/PercentCircle/OnboardingCircularPro
 import styles from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RootStackNavigatorRouts } from '../../../variables/navigationRouts';
+import { trackEvent } from '../../../shared/analytics';
+import { Events } from '../../../shared/analytics/events';
 
 class ProgressStep extends PureComponent {
   seenOnboarding = async () => {
@@ -19,6 +21,10 @@ class ProgressStep extends PureComponent {
       console.warn(error);
     }
   };
+
+  componentDidMount() {
+    trackEvent(Events.Onboarding.PersonalizationScreenShowed);
+  }
 
   navigateToSubscribeScreenWithoutOnboarding = async () => {
     const { navigation } = this.props;

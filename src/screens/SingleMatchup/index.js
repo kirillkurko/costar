@@ -29,6 +29,8 @@ import styles from './styles';
 import { resources } from '../../shared';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
+import { Events } from '../../shared/analytics/events';
+import { trackEvent } from '../../shared/analytics';
 
 type State = {
   userBirthDateParts: Array<string>,
@@ -54,6 +56,11 @@ const options = [
     value: 'psychomatrix',
   },
 ];
+
+const EventOptions = {
+  skills: Events.Personality.SkillsButtonClick,
+  psychomatrix: Events.Personality.PsychomatrixButtonClick,
+};
 
 const CustomScrollView = wrapScrollView(ScrollView);
 
@@ -174,6 +181,7 @@ class SingleMatchup extends PureComponent<Props, State> {
   };
 
   onSwitch = (value) => {
+    trackEvent(EventOptions[value]);
     this.setState({ section: value });
   };
 

@@ -10,6 +10,8 @@ import { resources } from '../../../shared';
 import styles from './styles';
 import { NavigationContext } from '@react-navigation/native';
 import { BottomTabNavigatorRouts } from '../../../variables/navigationRouts';
+import { trackEvent } from '../../../shared/analytics';
+import { Events } from '../../../shared/analytics/events';
 
 type Props = {
   index: number,
@@ -22,6 +24,7 @@ class PromotingPost extends PureComponent<Props> {
     const { index } = this.props;
 
     let navigation = this.context;
+    trackEvent(Events.Personality.TryItNowButtonClick);
     navigation.navigate(BottomTabNavigatorRouts.Compatibility);
   };
 
