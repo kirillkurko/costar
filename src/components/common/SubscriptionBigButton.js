@@ -24,7 +24,12 @@ export const SubscriptionBigButton = (props) => {
   const navigation = useNavigation();
 
   const onPress = () => {
-    track(Events.TryFree, { tab: 'Daily numerology' });
+    const state = navigation.getState();
+    const routeName = state.routes[state.index].name;
+
+    const tab = routeName === 'daily' ? 'Daily numerology' : 'Personality';
+    track(Events.TryFree, { tab });
+
     navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant);
   };
 
