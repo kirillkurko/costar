@@ -8,6 +8,8 @@ import { img } from 'assets/img';
 import { resources } from '../../shared';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
+import { Events } from '../../shared/analytics/events';
+import { trackEvent } from '../../shared/analytics';
 
 type State = {
   isVisible: boolean,
@@ -26,6 +28,8 @@ class SubscriptionCircleButton extends PureComponent<Props, State> {
   onPress = () => {
     const { refresh } = this.props;
     const { navigation } = this.context;
+
+    trackEvent(Events.TryFree, { tab: 'Compatibility' });
 
     navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant, {
       onGoBack: () => refresh(),

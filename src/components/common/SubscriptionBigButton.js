@@ -10,6 +10,8 @@ import { wp } from 'src/helpers';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
 import { useNavigation } from '@react-navigation/native';
+import { useAnalytics } from '../../shared/analytics';
+import { Events } from '../../shared/analytics/events';
 
 type Props = {
   refresh(): Promise<void>,
@@ -17,10 +19,12 @@ type Props = {
 };
 
 export const SubscriptionBigButton = (props) => {
+  const track = useAnalytics();
   const [isVisible, setIsVisible] = useState(true);
   const navigation = useNavigation();
 
   const onPress = () => {
+    track(Events.TryFree, { tab: 'Daily numerology' });
     navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant);
   };
 
