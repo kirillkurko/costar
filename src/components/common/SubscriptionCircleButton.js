@@ -26,14 +26,11 @@ class SubscriptionCircleButton extends PureComponent<Props, State> {
   };
 
   onPress = () => {
-    const { refresh } = this.props;
     const { navigation } = this.context;
 
     trackEvent(Events.TryFree, { tab: 'Compatibility' });
 
-    navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant, {
-      onGoBack: () => refresh(),
-    });
+    navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant);
   };
 
   onCloseCircleButton = () => {

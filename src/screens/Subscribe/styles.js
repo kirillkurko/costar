@@ -476,7 +476,6 @@ const Styles2 = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: scale(20),
-    marginBottom: scale(20),
     padding: 20,
     borderRadius: 16,
   },

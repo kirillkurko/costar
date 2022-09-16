@@ -13,11 +13,11 @@ import purchasesInteractions from 'src/shared/purchases/interactions';
 import type { PurchasesPackageType } from 'src/shared/purchases/types';
 import BigButton from 'src/shared/components/BigButton';
 import styles from './styles';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { OnboardingStackNavigatorRouts } from '../../../variables/navigationRouts';
 import { useNavigation } from '@react-navigation/native';
 import { useAnalytics } from '../../../shared/analytics';
 import { Events } from '../../../shared/analytics/events';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type Props = {
   setAvailablePurchases(Array<PurchasesPackageType>): void,

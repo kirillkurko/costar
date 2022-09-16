@@ -85,6 +85,7 @@ const getAvailablePurchases = async () => {
         purchase.productId === MATCHUP_SUBSCRIPTIONS.YEAR2 ||
         purchase.productId === MATCHUP_SUBSCRIPTIONS.YEAR,
     );
+
     if (isActiveSubscription) {
       await AsyncStorage.setItem('isActivePurchase', JSON.stringify(true));
     } else {
