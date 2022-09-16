@@ -25,6 +25,13 @@ import { MATCHUP_SUBSCRIPTIONS_PRICE_USD } from 'src/shared/iap/constants';
 import reviewConfiguration from './reviewConfiguration';
 import { Styles2 as styles } from './styles';
 import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
+import { Events } from '../../shared/analytics/events';
+import { trackEvent } from '../../shared/analytics';
+
+const SubscriptionEvent = {
+  annual: Events.Paywall.YearButtonClick,
+  monthly: Events.Paywall.MonthButtonClick,
+};
 
 type Props = {
   selectedAnswer: string,
@@ -115,12 +122,15 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
 
   handleCardPress = (selectedSubscription: string) => {
     this.setState({ selectedSubscription });
+    trackEvent(SubscriptionEvent[selectedSubscription]);
     this.purchasePackage();
   };
 
   closeScreen = async (closeType: string) => {
     this.setState({ isFetching: false });
     const { route, navigation } = this.props;
+
+    trackEvent(Events.Paywall.ExitIconClick);
 
     if (route.params && route.params.screen === 'Onboarding') {
       navigation.replace(RootStackNavigatorRouts.TabNavigator);
@@ -142,6 +152,8 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
   removeSpinner = () => this.setState({ isFetching: false });
 
   purchasePackage = async () => {
+    trackEvent(Events.Paywall.ContinueButtonClick);
+
     try {
       const { selectedSubscription } = this.state;
       const { availablePurchases } = this.props;
@@ -154,6 +166,8 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
       await purchasesInteractions.purchasePackage(purchase);
 
       this.setState({ isFetching: false });
+
+      trackEvent(Events.Paywall.WinWinShowed);
 
       setTimeout(() => {
         this.closeScreen('automatically');
@@ -168,6 +182,7 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
   };
 
   restorePurchase = async () => {
+    trackEvent(Events.Paywall.RestoreButtonClick);
     await purchasesInteractions.restorePurchase();
   };
 
