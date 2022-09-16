@@ -27,6 +27,8 @@ import styles from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { OnboardingStackNavigatorRouts } from '../../../variables/navigationRouts';
 import { useNavigation } from '@react-navigation/native';
+import { useAnalytics } from '../../../shared/analytics';
+import { Events } from '../../../shared/analytics/events';
 
 const { State: TextInputState } = TextInput;
 
@@ -44,6 +46,7 @@ type State = {
 const NameStep = (props) => {
   const textInput = React.createRef();
   const navigation = useNavigation();
+  const track = useAnalytics();
 
   const [state, setState] = useState({
     value: '',
@@ -107,6 +110,7 @@ const NameStep = (props) => {
 
   const onFocus = () => {
     setState({ ...state, placeholder: '' });
+    track(Events.Onboarding.NameInputClick);
   };
 
   const onBlur = () => {
@@ -121,6 +125,7 @@ const NameStep = (props) => {
     await AsyncStorage.setItem('name', userName);
     dispatch(setUserName(userName));
     navigation.navigate(OnboardingStackNavigatorRouts.BirthdayStep);
+    track(Events.Onboarding.NameNextButtonClick);
   };
 
   const { value, shift, isAnimate, placeholder } = state;

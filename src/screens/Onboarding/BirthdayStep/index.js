@@ -29,6 +29,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { OnboardingStackNavigatorRouts } from '../../../variables/navigationRouts';
 import DatePicker from 'react-native-date-picker';
 import { colors } from '../../../variables';
+import { trackEvent } from '../../../shared/analytics';
+import { Events } from '../../../shared/analytics/events';
 
 type Props = {
   dispatch: ReduxDispatch,
@@ -71,6 +73,7 @@ class BirthdayStep extends PureComponent<Props, State> {
     navigation.navigate(OnboardingStackNavigatorRouts.QuestionsStep, {
       number: 0,
     });
+    trackEvent(Events.Onboarding.BirthdayNextButtonClick);
   };
 
   render() {
