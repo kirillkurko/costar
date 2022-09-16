@@ -1,7 +1,7 @@
 // @flow
 
 import React, { useCallback } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import Button from 'src/shared/components/Button';
@@ -37,21 +37,23 @@ const FeedbackPost = ({ getFAQ }: Props) => {
   }, [navigation]);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.leftContainer}>
-        <Text style={styles.title}>
-          {resources.t('POST.ASK_US_DESCRIPTION')}
-        </Text>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.container}>
+        <View style={styles.leftContainer}>
+          <Text style={styles.title}>
+            {resources.t('POST.ASK_US_DESCRIPTION')}
+          </Text>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            buttonText={resources.t('POST.ASK_US')}
+            onPress={onPress}
+            style={styles.button}
+            withArrowIcon={false}
+          />
+        </View>
       </View>
-      <View style={styles.buttonContainer}>
-        <Button
-          buttonText={resources.t('POST.ASK_US')}
-          onPress={onPress}
-          style={styles.button}
-          withArrowIcon={false}
-        />
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
