@@ -49,6 +49,7 @@ const DatePicker = ({
             </TouchableOpacity>
           </View>
           <DateTimePicker
+            maximumDate={new Date()}
             value={value}
             display='spinner'
             locale={resources.t('PREFERENCES.LANGUAGE')}
