@@ -48,13 +48,9 @@ export class Card extends PureComponent<Props> {
   static contextType = NavigationContext;
   onPress = (source) => {
     let navigation = this.context;
-    const { refresh, title } = this.props;
+    const { title } = this.props;
 
-    navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant, {
-      onGoBack: refresh(),
-    });
-
-    console.log(title);
+    navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant);
 
     if (source === 'button') {
       trackEvent(TitleEvent[title]);
