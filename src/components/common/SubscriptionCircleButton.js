@@ -29,7 +29,7 @@ class SubscriptionCircleButton extends PureComponent<Props, State> {
     const { refresh } = this.props;
     const { navigation } = this.context;
 
-    trackEvent(Events.TryFree, { tab: 'Compatibility' });
+    trackEvent(Events.TryFree.ButtonClick, { tab: 'Compatibility' });
 
     navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant, {
       onGoBack: () => refresh(),
