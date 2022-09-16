@@ -10,14 +10,28 @@ import { colors, fonts } from 'src/variables';
 import { wp } from 'src/helpers';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
+import { useAnalytics } from '../../shared/analytics';
+import { Events } from '../../shared/analytics/events';
 
 type Props = {
   getFAQ(): void,
 };
 
+const RouteEvent = {
+  personality: Events.Personality.AskUsButtonClick,
+  daily: Events.DailyNumerology.AskUsButtonClick,
+};
+
 const FeedbackPost = ({ getFAQ }: Props) => {
   const navigation = useNavigation();
+  const track = useAnalytics();
+
   const onPress = useCallback(() => {
+    const state = navigation.getState();
+    const routeName = state.routes[state.index].name;
+
+    track(RouteEvent[routeName]);
+
     getFAQ();
     navigation.navigate(RootStackNavigatorRouts.FAQ);
   }, [navigation]);

@@ -29,6 +29,8 @@ import styles from './styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContext } from '@react-navigation/native';
 import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
+import { trackEvent } from '../../shared/analytics';
+import { Events } from '../../shared/analytics/events';
 
 type State = {
   userBirthDateParts: Array<string>,
@@ -59,6 +61,12 @@ const options = [
     value: 'tomorrow',
   },
 ];
+
+const DateEvent = {
+  yesterday: Events.DailyNumerology.YesterdayButtonClick,
+  today: Events.DailyNumerology.TodayButtonClick,
+  tomorrow: Events.DailyNumerology.TomorrowButtonClick,
+};
 
 const CustomScrollView = wrapScrollView(ScrollView);
 
@@ -162,6 +170,7 @@ class DailyMatchup extends PureComponent<Props, State> {
   };
 
   onSwitch = (value) => {
+    trackEvent(DateEvent[value]);
     this.setState({ section: value });
   };
 

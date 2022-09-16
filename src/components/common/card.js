@@ -32,18 +32,27 @@ type Props = {
   eventSource: string,
 };
 
+const TitleEvent = {
+  'Love compatibility': Events.Compatibility.LoveUnlockButtonClick,
+  'Job / Business': Events.DailyNumerology.JobUnlockButtonClick,
+  Prosperity: Events.DailyNumerology.ProsperityUnlockButtonClick,
+  Love: Events.DailyNumerology.LoveUnlockButtonClick,
+  Health: Events.DailyNumerology.HealthUnlockButtonClick,
+  'Self development': Events.DailyNumerology.SelfUnlockButtonClick,
+};
+
 export class Card extends PureComponent<Props> {
   static contextType = NavigationContext;
   onPress = (source) => {
     let navigation = this.context;
-    const { refresh } = this.props;
+    const { refresh, title } = this.props;
 
     navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant, {
       onGoBack: refresh(),
     });
 
     if (source === 'button') {
-      trackEvent(Events.Compatibility.LoveUnlockButtonClick);
+      trackEvent(TitleEvent[title]);
     }
   };
 
