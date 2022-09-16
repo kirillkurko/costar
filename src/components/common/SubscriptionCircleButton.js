@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import { colors, fonts } from 'src/variables';
@@ -10,6 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
 import { Events } from '../../shared/analytics/events';
 import { trackEvent } from '../../shared/analytics';
+import { useNavigation } from '@react-navigation/native';
 
 type State = {
   isVisible: boolean,
@@ -20,50 +21,42 @@ type Props = {
   eventSource: string,
 };
 
-class SubscriptionCircleButton extends PureComponent<Props, State> {
-  state = {
-    isVisible: true,
-  };
+const SubscriptionCircleButton = (props) => {
+  const [isVisible, setState] = useState(true);
+  const navigation = useNavigation();
 
-  onPress = () => {
-    const { navigation } = this.context;
-
+  const onPress = () => {
     trackEvent(Events.TryFree.ButtonClick, { tab: 'Compatibility' });
 
     navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant);
   };
 
-  onCloseCircleButton = () => {
-    this.setState({ isVisible: false });
-    AsyncStorage.setItem('purchaseButtonVisibility', JSON.stringify(false));
+  const onCloseCircleButton = async () => {
+    setState({ isVisible: false });
+    await AsyncStorage.setItem(
+      'purchaseButtonVisibility',
+      JSON.stringify(false),
+    );
   };
 
-  render() {
-    const { isVisible } = this.state;
-    return isVisible ? (
+  return isVisible ? (
+    <TouchableOpacity style={styles.subscriptionCircleButton} onPress={onPress}>
       <TouchableOpacity
-        style={styles.subscriptionCircleButton}
-        onPress={this.onPress}>
-        <TouchableOpacity
-          style={styles.subscriptionCircleCloseContainer}
-          onPress={this.onCloseCircleButton}>
-          <Image
-            source={img.iconClose}
-            style={styles.subscriptionCircleClose}
-          />
-        </TouchableOpacity>
-        <Image
-          resizeMode='contain'
-          source={img.iconDiamond}
-          style={styles.subscriptionCircleImage}
-        />
-        <Text style={styles.subscriptionCircleText}>
-          {resources.t('SUBSCRIPTION.TRY_FREE')}
-        </Text>
+        style={styles.subscriptionCircleCloseContainer}
+        onPress={onCloseCircleButton}>
+        <Image source={img.iconClose} style={styles.subscriptionCircleClose} />
       </TouchableOpacity>
-    ) : null;
-  }
-}
+      <Image
+        resizeMode='contain'
+        source={img.iconDiamond}
+        style={styles.subscriptionCircleImage}
+      />
+      <Text style={styles.subscriptionCircleText}>
+        {resources.t('SUBSCRIPTION.TRY_FREE')}
+      </Text>
+    </TouchableOpacity>
+  ) : null;
+};
 
 export default SubscriptionCircleButton;
 
