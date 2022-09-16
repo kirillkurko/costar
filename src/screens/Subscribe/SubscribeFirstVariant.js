@@ -175,6 +175,8 @@ class SubscribeFirstVariant extends PureComponent<Props, State> {
     } catch (error) {
       this.setState({ isFetching: false });
 
+      trackEvent(Events.Paywall.ErrorShowed, { messages: error.message });
+
       if (!error.userCancelled) {
         Alert.alert(error.message);
       }

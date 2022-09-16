@@ -24,6 +24,7 @@ export const Events = {
     MonthButtonClick: 'Paywall_MonthButton_click',
     ContinueButtonClick: 'Paywall_ContinueButton_click',
     WinWinShowed: 'Paywall_WinWin_showed',
+    ErrorShowed: 'Paywall_Error_showed',
   },
   Personality: {
     SkillsButtonClick: 'Personality_SkillsButton_click',
