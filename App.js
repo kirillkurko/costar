@@ -10,6 +10,7 @@ import purchasesInteractions from './src/shared/purchases/interactions';
 import { AMPLITUDE_API_KEY } from './src/shared/analytics';
 import { init } from '@amplitude/analytics-react-native';
 import appsFlyer from 'react-native-appsflyer';
+import { Settings } from 'react-native-fbsdk-next';
 
 const persistor = persistStore(store);
 
@@ -32,6 +33,10 @@ const App = () => {
 
   useEffect(() => {
     init(AMPLITUDE_API_KEY);
+  }, []);
+
+  useEffect(() => {
+    Settings.setAdvertiserTrackingEnabled(true);
   }, []);
 
   purchasesInteractions.setup();
