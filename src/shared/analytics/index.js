@@ -11,7 +11,11 @@ export const useAnalytics = (eventName, eventProperties) => {
     }
   }, [eventName, eventProperties]);
 
-  return (name, properties) => track(name, properties);
+  return (...args) => track(...args);
+};
+
+export const trackEvent = (...args) => {
+  track(...args);
 };
 
 export const logTargetEvent = (eventName, eventProperties) => {
