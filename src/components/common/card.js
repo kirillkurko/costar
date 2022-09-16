@@ -17,6 +17,8 @@ import { colors, fonts } from 'src/variables';
 import { img } from 'assets/img';
 import { NavigationContext } from '@react-navigation/native';
 import { RootStackNavigatorRouts } from '../../variables/navigationRouts';
+import { Events } from '../../shared/analytics/events';
+import { trackEvent } from '../../shared/analytics';
 
 type Props = {
   isFetching: boolean,
@@ -32,13 +34,17 @@ type Props = {
 
 export class Card extends PureComponent<Props> {
   static contextType = NavigationContext;
-  onPress = () => {
+  onPress = (source) => {
     let navigation = this.context;
     const { refresh } = this.props;
 
     navigation.navigate(RootStackNavigatorRouts.SubscribeFirstVariant, {
       onGoBack: refresh(),
     });
+
+    if (source === 'button') {
+      trackEvent(Events.Compatibility.LoveUnlockButtonClick);
+    }
   };
 
   render() {
